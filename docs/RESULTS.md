@@ -19,14 +19,29 @@ The standalone logistic regression without AADF scores approximately 0.441, comp
 
 ## Scope and limitations
 
-This estimates recorded crash severity conditional on an injury crash having occurred. It does not predict whether a crash will occur. The training population is Great Britain; performance in Bangalore or elsewhere in India has not been established. The split is by crash, allowing road links to recur across partitions. Future-year and unseen-link validation remain unmeasured. The existing shared test has already been inspected during development; results must not be presented as fresh external validation.
+This estimates recorded crash severity conditional on an injury crash having occurred. It does not predict whether a crash will occur. The training population is Great Britain; performance in Bangalore or elsewhere in India has not been established. The split is by crash, allowing road links to recur across partitions. Future-year validation remains unmeasured. A separate unseen-link experiment is reported below. The existing shared test has already been inspected during development; results must not be presented as fresh external validation.
 
 AADF covers a selected major-road subset, with many estimated traffic values. Only 49 test fatalities make recall sensitive to individual predictions. Feature attribution is not causal explanation. The score weighting improves a validation objective and does not calibrate probabilities.
 
 ## Reproduction and verification
 
-Run `python train_models.py`, then `python -m unittest discover -s tests -v`. Six tests cover partition integrity, leakage-column exclusion, bundle predictions, class-order weights, invalid inputs and readable scenario encoding. GitHub Actions repeats training and both prediction entry points.
+Run `python train_models.py`, then `python -m unittest discover -s tests -v`. Nine tests cover partition integrity, leakage-column exclusion, bundle predictions, class-order weights, invalid inputs readable scenario encoding, malformed JSON types, unexpected predictors and grouped-link separation. GitHub Actions repeats training and both prediction entry points.
 
-## Academic handoff
+## Unseen road links
 
-The executable ML workflow is complete. Before formal submission, the team must supply the required author affiliations, assign at least two reviewed papers per member, confirm its institution’s template, and approve the final manuscript. Team member reviews and external validation must not be represented as completed by this repository.
+Run `python evaluate_unseen_links.py` to rematch the source data, create disjoint count-point partitions and retune every model family within those partitions. Seed 42 is used without searching seeds. There are 4,977 train links, 1,245 validation links and 1,556 test links, with zero overlap. The test has 3,862 crashes and 38 fatalities. The forest is retuned here, so changes from the historical experiment are not attributable solely to the split.
+
+| Model | AADF | Accuracy | Macro F1 | Fatal recall |
+|---|---|---:|---:|---:|
+| logistic_regression | without_aadf | 67.84% | 0.4400 | 31.58% |
+| logistic_regression | with_aadf | 67.53% | 0.4337 | 28.95% |
+| decision_tree | without_aadf | 67.76% | 0.4054 | 18.42% |
+| decision_tree | with_aadf | 67.79% | 0.4010 | 15.79% |
+| random_forest | without_aadf | 64.06% | 0.4082 | 34.21% |
+| random_forest | with_aadf | 64.79% | 0.4122 | 28.95% |
+
+Detailed counts and settings are in `validation/unseen_links/audit.json` and `metrics.json`. These are new partitions of previously inspected data; future-year external validation remains separate.
+
+## Submission material
+
+The manuscript and editable IEEEtran source are in `docs/paper/`. Eight source-backed literature notes are in `docs/LITERATURE.md`. `docs/DEMO.md` covers execution and viva questions. The author block uses the project-team name until the real author list and order are supplied. Member reading activity must be confirmed by the members rather than inferred from these notes.

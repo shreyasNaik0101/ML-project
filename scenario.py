@@ -14,11 +14,15 @@ VEHICLES = {'bicycle': 1, 'motorcycle_50cc': 2, 'motorcycle_125cc': 3, 'motorcyc
 
 
 def prepare(scenario, features):
+    if not isinstance(scenario, dict):
+        raise ValueError('Scenario must be a JSON object')
     row = {f: 0 for f in features}
     try:
         row['road_type'] = ROAD[scenario['road_type']]
         row['weather_conditions'] = WEATHER[scenario['weather']]
         row['road_surface_conditions'] = SURFACE[scenario['surface']]
+        if not isinstance(scenario['time'], str):
+            raise ValueError('Time must be a string using HH:MM')
         parts = scenario['time'].split(':')
         if len(parts) != 2:
             raise ValueError('Time must use HH:MM')
@@ -35,6 +39,8 @@ def prepare(scenario, features):
         if not isinstance(vehicles, list) or not vehicles:
             raise ValueError('Provide at least one vehicle in a list')
         for vehicle in vehicles:
+            if not isinstance(vehicle, str):
+                raise ValueError('Each vehicle must be a category name')
             feature = f'vehicle_type_{VEHICLES[vehicle]}'
             if feature not in features:
                 raise ValueError(f'Vehicle type absent from trained model: {vehicle}')

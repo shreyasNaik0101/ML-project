@@ -8,6 +8,7 @@ from modeling import choose_score_weights
 from predict import predict
 from scenario import prepare
 from train_models import validate_data
+from evaluate_unseen_links import partition_links
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,6 +38,28 @@ class WorkflowTests(unittest.TestCase):
             prepare(dict(scenario, time='25:00'), bundle['features'])
         with self.assertRaises(ValueError):
             prepare(dict(scenario, vehicles=[]), bundle['features'])
+
+    def test_grouped_partitions_are_disjoint(self):
+        rows = pd.DataFrame({'count_point_id': np.repeat(np.arange(50), 3)})
+        result = partition_links(rows)
+        groups = [set(part['count_point_id']) for _, part in result.groupby('split')]
+        self.assertEqual(len(groups), 3)
+        for i in range(3):
+            for j in range(i):
+                self.assertFalse(groups[i] & groups[j])
+        self.assertEqual(len(result), len(rows))
+
+    def test_reject_unexpected_predictors(self):
+        with self.assertRaisesRegex(ValueError, 'leak'):
+            validate_data(self.data.assign(number_of_casualties=1))
+
+    def test_scenario_rejects_wrong_json_types(self):
+        import json
+        scenario = json.loads((ROOT / 'examples/scenario.json').read_text())
+        bundle = joblib.load(ROOT / 'artifacts/logistic_regression_with_aadf.joblib')
+        for value in ([], None, dict(scenario, time=None), dict(scenario, vehicles=[{}])):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                prepare(value, bundle['features'])
 
     def test_weights_follow_class_order(self):
         classes = ['Fatal', 'Serious', 'Slight']

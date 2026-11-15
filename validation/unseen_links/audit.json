@@ -1,0 +1,33 @@
+{
+  "seed": 42,
+  "group_column": "count_point_id",
+  "partition_overlap_links": 0,
+  "split_crashes": {
+    "test": 3862,
+    "train": 12479,
+    "validation": 3056
+  },
+  "split_links": {
+    "test": 1556,
+    "train": 4977,
+    "validation": 1245
+  },
+  "split_class_counts": {
+    "test": {
+      "Fatal": 38,
+      "Serious": 842,
+      "Slight": 2982
+    },
+    "train": {
+      "Fatal": 135,
+      "Serious": 2711,
+      "Slight": 9633
+    },
+    "validation": {
+      "Fatal": 38,
+      "Serious": 726,
+      "Slight": 2292
+    }
+  },
+  "protocol": "GroupShuffleSplit 20% test links, then 20% of development links for validation; no seed search. All model families select settings using only grouped training and validation. These are new partitions of an already inspected dataset, not new external data."
+}

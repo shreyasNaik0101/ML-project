@@ -44,7 +44,15 @@ python predict.py --input examples/prepared_crashes.csv --output predictions.csv
 
 Input CSVs require the bundle's feature columns. IDs are optional and preserved. Severity and split columns are ignored. Outputs contain the predicted class and raw model scores; the chosen class uses the saved class multipliers. Raw scores are **not calibrated fatality probabilities**, and can rank classes differently from the adjusted decision. Load only trusted joblib files.
 
-[Verified rerun results and discussion](docs/RESULTS.md) · [Literature notes](docs/LITERATURE.md)
+[Research paper](docs/paper/paper.pdf) · [Verified results](docs/RESULTS.md) · [Eight literature reviews](docs/LITERATURE.md) · [Demo and viva guide](docs/DEMO.md)
+
+### Evaluate unseen road links
+
+```powershell
+python evaluate_unseen_links.py
+```
+
+This uses the included raw source files to rematch road links and keep each count-point link in one partition. All three model families are selected within the new development partitions. Audits and results go to `validation/unseen_links/`; regenerated datasets and bundles are excluded from version control. The report contains the executed metrics. This evaluates new links within the same already inspected source year, not a future population.
 
 ### Original preparation and notebooks
 

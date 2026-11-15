@@ -1,6 +1,7 @@
 """Reproduce all three matched-data classifiers and export inference bundles."""
 import argparse
 import json
+import re
 from pathlib import Path
 
 import joblib
@@ -10,13 +11,21 @@ import sklearn
 from sklearn.metrics import average_precision_score
 from threadpoolctl import threadpool_limits
 
-from modeling import AADF, BASE_NUMERIC, LABELS, make_pipeline, choose_score_weights
+from modeling import AADF, BASE_NUMERIC, CATEGORICAL, LABELS, make_pipeline, choose_score_weights
 from train_random_forest import ID, TARGET, MODERATE_WEIGHTS, build_forest, evaluate
 
 ROOT = Path(__file__).resolve().parent
 
 
 def validate_data(data):
+    required = {ID, TARGET, 'split', AADF, *BASE_NUMERIC, *CATEGORICAL}
+    missing = required - set(data.columns)
+    if missing:
+        raise ValueError(f'Missing required data columns: {sorted(missing)}')
+    unexpected = [c for c in data if c not in required and
+                  not re.fullmatch(r'vehicle_type_(?:[0-9]+|missing)|vehicle_record_missing', c)]
+    if unexpected:
+        raise ValueError(f'Unexpected predictors could leak labels: {unexpected}')
     if data[ID].isna().any() or not data[ID].is_unique:
         raise ValueError('Crash IDs must be present and unique')
     if set(data['split']) != {'train', 'validation', 'test'}:
@@ -28,7 +37,7 @@ def validate_data(data):
         raise ValueError('AADF must be finite and nonnegative')
 
 
-def run(data_path, destination):
+def run(data_path, destination, tune_forest=False):
     data = pd.read_csv(data_path, dtype={ID: str}, float_precision='round_trip')
     validate_data(data)
     destination.mkdir(parents=True, exist_ok=True)
@@ -40,7 +49,22 @@ def run(data_path, destination):
     for family in ('logistic_regression', 'decision_tree', 'random_forest'):
         trials = []
         if family == 'random_forest':
-            selected = json.loads((ROOT / 'tuned_metrics.json').read_text())['selected']
+            if tune_forest:
+                from tune_random_forest import tune_decision_weights
+                for depth in (8, 14):
+                    for weight in (None, MODERATE_WEIGHTS, 'balanced'):
+                        candidate = build_forest(base + [AADF], depth, weight, jobs=2,
+                                                 numeric=BASE_NUMERIC + [AADF])
+                        candidate.fit(train[base + [AADF]], train[TARGET])
+                        score, weights = tune_decision_weights(
+                            candidate.predict_proba(val[base + [AADF]]),
+                            val[TARGET], candidate.classes_.tolist())
+                        trials.append(dict(depth=depth, training_class_weight=weight,
+                            decision_weights=dict(zip(candidate.classes_, weights.tolist())),
+                            validation_macro_f1=score[0], validation_accuracy=score[1]))
+                selected = max(trials, key=lambda r: (r['validation_macro_f1'], r['validation_accuracy']))
+            else:
+                selected = json.loads((ROOT / 'tuned_metrics.json').read_text())['selected']
         else:
             values = (0.1, 1., 10.) if family == 'logistic_regression' else (4, 8, 14)
             for complexity in values:

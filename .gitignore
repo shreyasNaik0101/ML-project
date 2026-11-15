@@ -6,3 +6,9 @@ __pycache__/
 __pycache__/
 *.pyc
 predictions.csv
+validation/unseen_links/models/
+validation/unseen_links/prepared_crashes.csv.gz
+validation/unseen_links/link_assignments.csv.gz
+docs/paper/*.aux
+docs/paper/*.log
+docs/paper/*.out
