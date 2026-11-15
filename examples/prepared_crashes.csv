@@ -1,0 +1,6 @@
+collision_index,road_type,weather_conditions,road_surface_conditions,speed_limit,time_sin,time_cos,vehicle_type_1,vehicle_type_10,vehicle_type_11,vehicle_type_16,vehicle_type_17,vehicle_type_18,vehicle_type_19,vehicle_type_2,vehicle_type_20,vehicle_type_21,vehicle_type_22,vehicle_type_23,vehicle_type_3,vehicle_type_33,vehicle_type_4,vehicle_type_5,vehicle_type_8,vehicle_type_9,vehicle_type_90,vehicle_type_97,vehicle_type_98,vehicle_type_99,vehicle_type_missing,aadf_motor_vehicles_per_day
+2025010551786,6,1,1.0,20,0.0174524064372835,0.9998476951563912,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,22844
+2025010551795,6,4,1.0,20,0.2756373558169991,0.9612616959383188,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,13028
+2025010551805,6,4,1.0,20,0.9914448613738104,0.1305261922200517,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,21215
+2025010551809,3,1,1.0,40,0.9713420698132614,-0.237685892326173,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,42000
+2025010551812,3,4,1.0,30,0.4809887689193876,0.8767267557075077,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23954

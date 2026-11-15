@@ -2,22 +2,60 @@
 
 [Progress report (PDF)](Road%20Accident%20Severity%20-%20Progress%20Report.pdf) · [Three-model comparison](aadf_experiment/README.md) · [Source data and attribution](data/README.md)
 
-## Run from this repository
+## Complete workflow
 
-Use Python 3.12. To view and rerun the two notebooks, open the `aadf_experiment` directory in JupyterLab and run all cells with the included `matched_crashes.csv.gz` beside each notebook.
+Python 3.12 is recommended. Clone the project, create an isolated environment, and install the recorded dependencies:
 
 ```powershell
+git clone https://github.com/shreyasNaik0101/ML-project.git
+cd ML-project
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-python -m jupyterlab aadf_experiment
 ```
 
-To rebuild the prepared datasets and Random Forest models, run these commands from the repository root:
+On Linux/macOS activate with `source .venv/bin/activate` instead.
+
+### Train and compare all three models
+
+```powershell
+python train_models.py
+python -m unittest discover -s tests -v
+```
+
+This command uses the included prepared matched data. It trains logistic regression, decision tree and Random Forest, with and without AADF, and saves six bundles, detailed metrics and a comparison CSV in `artifacts/`. Selection uses validation rows; final fitting uses train plus validation. Test rows are used only for evaluation. Logistic regression and decision tree share their notebook selection protocol; Random Forest keeps its earlier locked settings. These are comparisons of those configurations, rather than equally tuned model families.
+
+### Predict a readable scenario
+
+Edit [examples/scenario.json](examples/scenario.json), then run:
+
+```powershell
+python scenario.py --input examples/scenario.json
+python scenario.py --input examples/scenario.json --model artifacts/logistic_regression_with_aadf.joblib
+```
+
+The default is logistic regression without AADF. It is a convenient demo default; no new independent test was used to select a deployment model. Road, weather, surface and vehicle names are listed in [scenario.py](scenario.py). Speed is a **limit in mph**, not vehicle speed. AADF is required by the seven-input bundle and is a typical daily traffic volume, not live traffic density. The example's AADF is an illustrative scenario value. For real cases use a measured or correctly matched value.
+
+For batch scoring of prepared CSV rows:
+
+```powershell
+python predict.py --input examples/prepared_crashes.csv --output predictions.csv
+```
+
+Input CSVs require the bundle's feature columns. IDs are optional and preserved. Severity and split columns are ignored. Outputs contain the predicted class and raw model scores; the chosen class uses the saved class multipliers. Raw scores are **not calibrated fatality probabilities**, and can rank classes differently from the adjusted decision. Load only trusted joblib files.
+
+[Verified rerun results and discussion](docs/RESULTS.md) · [Literature notes](docs/LITERATURE.md)
+
+### Original preparation and notebooks
 
 ```powershell
 python train_random_forest.py --data-dir data
 python tune_random_forest.py
 python compare_aadf.py --data-dir data --geometry data/mrdb-2025.zip
+python -m jupyterlab aadf_experiment
 ```
+
+The original scripts overwrite their historical outputs when run without a separate `--output-dir`. The new `train_models.py` writes to `artifacts/` and preserves the historical experiments. The notebook results below describe the original run; small numerical differences may occur across solver/library environments.
 
 Random Forest experiment using Great Britain’s 2025 STATS19 police-reported injury crashes. The unit of prediction is one crash, with the recorded label Slight, Serious, or Fatal. Data and field definitions are available from the [Department for Transport](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data).
 
