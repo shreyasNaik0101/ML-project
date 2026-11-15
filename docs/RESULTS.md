@@ -45,3 +45,9 @@ Detailed counts and settings are in `validation/unseen_links/audit.json` and `me
 ## Submission material
 
 The manuscript and editable IEEEtran source are in `docs/paper/`. Eight source-backed literature notes are in `docs/LITERATURE.md`. `docs/DEMO.md` covers execution and viva questions. The author block uses the project-team name until the real author list and order are supplied. Member reading activity must be confirmed by the members rather than inferred from these notes.
+
+## Post merge inference validation
+
+The inference checks now include 14 passing tests. Empty inputs, duplicate headers in CSV and gzip CSV files, unsupported speed limits, and invalid sine/cosine clock pairs are rejected. A fully missing numeric clock pair and missing speed remain imputable, while partially missing clock pairs are rejected. JSON scenarios support an unknown surface and require an HH:MM clock. `python scenario.py --options` lists supported inputs without loading a model.
+
+All six saved historical models were scored on every one of the 3,914 fixed test crashes after these changes. Their confusion matrices exactly match `artifacts/metrics.json`; no model was retrained and no reported score was changed. The paper documents the original experiment and its original nine-test snapshot; this section records the additional inference checks.

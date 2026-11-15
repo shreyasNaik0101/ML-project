@@ -30,6 +30,7 @@ This command uses the included prepared matched data. It trains logistic regress
 Edit [examples/scenario.json](examples/scenario.json), then run:
 
 ```powershell
+python scenario.py --options
 python scenario.py --input examples/scenario.json
 python scenario.py --input examples/scenario.json --model artifacts/logistic_regression_with_aadf.joblib
 ```
@@ -42,7 +43,7 @@ For batch scoring of prepared CSV rows:
 python predict.py --input examples/prepared_crashes.csv --output predictions.csv
 ```
 
-Input CSVs require the bundle's feature columns. IDs are optional and preserved. Severity and split columns are ignored. Outputs contain the predicted class and raw model scores; the chosen class uses the saved class multipliers. Raw scores are **not calibrated fatality probabilities**, and can rank classes differently from the adjusted decision. Load only trusted joblib files.
+Input CSVs require the bundle's feature columns. IDs are optional and preserved. Batch input rejects empty files, duplicate feature columns, unsupported speed limits, and invalid cyclic clock pairs. Missing speed or a fully missing clock pair are imputed; partial clock pairs are rejected. Use `surface: "unknown"` in a JSON scenario to use the trained missing-surface category. Severity and split columns are ignored. Outputs contain the predicted class and raw model scores; the chosen class uses the saved class multipliers. Raw scores are **not calibrated fatality probabilities**, and can rank classes differently from the adjusted decision. Load only trusted joblib files.
 
 [Research paper](docs/paper/paper.pdf) · [Verified results](docs/RESULTS.md) · [Eight literature reviews](docs/LITERATURE.md) · [Demo and viva guide](docs/DEMO.md)
 

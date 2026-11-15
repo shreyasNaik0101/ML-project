@@ -11,7 +11,7 @@ python -m pip install -r requirements.txt
 python scenario.py --input examples/scenario.json
 ```
 
-The repository contains six model bundles, so the first scenario does not require retraining. Edit the time, weather and vehicle involvement in `examples/scenario.json` and run again. Use only supported categories documented in `scenario.py`.
+The repository contains six model bundles, so the first scenario does not require retraining. Run `python scenario.py --options` to see the supported values, including `surface: "unknown"`. Edit the time, weather and vehicle involvement in `examples/scenario.json` and run again. Use only supported categories documented in `scenario.py`.
 
 ## Three minute walkthrough
 
