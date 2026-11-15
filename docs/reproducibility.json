@@ -1,0 +1,26 @@
+{
+  "python": "3.12.14",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "sha256": {
+    "aadf_experiment/matched_crashes.csv.gz": "9246297d14b3031cbb6d12c5cb60d0f562c951d90dc56298396367de486cddc7",
+    "data/dft-road-casualty-statistics-collision-2025.csv": "e699c19bdb82e47e449b6f3381ac87631865f6a31cef118c9955ba80ca870e2b",
+    "data/dft-road-casualty-statistics-vehicle-2025.csv": "dbeadb9745a8821ab8132f0dde59c246159e23059ab5db2c9a4381d44141a430",
+    "data/dft_traffic_counts_aadf.zip": "5273cf63da4ca8b317bfe972d8a345e7932db0fff7a7789998a890f0081232b6",
+    "data/count_points.zip": "4772abb13761694f35c7aba6d83915c5c168e94a0d25ae401e4b7e84ef7fcff2",
+    "data/mrdb-2025.zip": "f907b1b461209c14cc82c10a6e4d010a28429519a475f64296ef58e9c79722ec",
+    "artifacts/metrics.json": "664eb8863cb3eba4f8244106b7f8f1263c8cd531fda435d4be5a9552e65e4d29",
+    "validation/unseen_links/metrics.json": "5fae6aaed228a5a4664514a8d87584f4e074de39416adec4c6544d0cacc826f4"
+  },
+  "commands": [
+    "python train_models.py",
+    "python evaluate_unseen_links.py",
+    "python -m unittest discover -s tests -v"
+  ],
+  "test_count": 9,
+  "tests_passed": true
+}

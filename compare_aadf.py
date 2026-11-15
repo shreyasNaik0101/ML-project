@@ -82,6 +82,8 @@ def match_crashes(source, geometry):
         runner_up = pairs.loc[rank == 1].set_index(ID)["distance_m"]
         gap = runner_up.reindex(nearest.index, fill_value=np.inf) - nearest["distance_m"]
         matches.append(nearest.loc[(nearest["distance_m"] <= MAX_DISTANCE_M) & (gap > MIN_GAP_M)])
+    if not matches:
+        raise ValueError('No crashes matched eligible road links under the distance rules')
     result = pd.concat(matches).reset_index().join(traffic, on=POINT_ID)
     if not result[ID].is_unique or result[TRAFFIC].isna().any():
         raise ValueError("Expected exactly one valid traffic record for each matched crash")
