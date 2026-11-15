@@ -1,0 +1,222 @@
+{
+  "label_order": [
+    "Slight",
+    "Serious",
+    "Fatal"
+  ],
+  "selected": {
+    "depth": 14,
+    "training_class_weight": {
+      "Slight": 1.0,
+      "Serious": 1.5,
+      "Fatal": 4.0
+    },
+    "decision_weights": {
+      "Fatal": 3.947171419798511,
+      "Serious": 1.6322286186946962,
+      "Slight": 1.0
+    },
+    "validation_macro_f1": 0.4065883518636455,
+    "validation_accuracy": 0.6936715094804236
+  },
+  "validation_candidates": [
+    {
+      "depth": 8,
+      "training_class_weight": null,
+      "decision_weights": {
+        "Fatal": 0.04,
+        "Serious": 2.7725793726205867,
+        "Slight": 1.0
+      },
+      "validation_macro_f1": 0.3830659275012043,
+      "validation_accuracy": 0.6638143314454568
+    },
+    {
+      "depth": 8,
+      "training_class_weight": {
+        "Slight": 1.0,
+        "Serious": 1.5,
+        "Fatal": 4.0
+      },
+      "decision_weights": {
+        "Fatal": 5.619374641220148,
+        "Serious": 1.9475202771592741,
+        "Slight": 1.0
+      },
+      "validation_macro_f1": 0.39708825692706246,
+      "validation_accuracy": 0.6110563900517114
+    },
+    {
+      "depth": 8,
+      "training_class_weight": "balanced",
+      "decision_weights": {
+        "Fatal": 0.47410440374331686,
+        "Serious": 0.9608995471851454,
+        "Slight": 1.0
+      },
+      "validation_macro_f1": 0.3970812752103244,
+      "validation_accuracy": 0.6380201920709185
+    },
+    {
+      "depth": 14,
+      "training_class_weight": null,
+      "decision_weights": {
+        "Fatal": 8.0,
+        "Serious": 2.7725793726205867,
+        "Slight": 1.0
+      },
+      "validation_macro_f1": 0.381401641319491,
+      "validation_accuracy": 0.6513789706968727
+    },
+    {
+      "depth": 14,
+      "training_class_weight": {
+        "Slight": 1.0,
+        "Serious": 1.5,
+        "Fatal": 4.0
+      },
+      "decision_weights": {
+        "Fatal": 3.947171419798511,
+        "Serious": 1.6322286186946962,
+        "Slight": 1.0
+      },
+      "validation_macro_f1": 0.4065883518636455,
+      "validation_accuracy": 0.6936715094804236
+    },
+    {
+      "depth": 14,
+      "training_class_weight": "balanced",
+      "decision_weights": {
+        "Fatal": 0.33302128296074934,
+        "Serious": 0.9608995471851454,
+        "Slight": 1.0
+      },
+      "validation_macro_f1": 0.4003498827542768,
+      "validation_accuracy": 0.6359271115488796
+    }
+  ],
+  "tuned_random_forest_test": {
+    "accuracy": 0.6984486579660182,
+    "macro_f1": 0.40906944293089337,
+    "per_class": {
+      "Slight": {
+        "precision": 0.7792453983978475,
+        "recall": 0.8508947649572649,
+        "f1-score": 0.8134954834179196,
+        "support": 14976.0
+      },
+      "Serious": {
+        "precision": 0.4015972618368511,
+        "recall": 0.2794759825327511,
+        "f1-score": 0.3295880149812734,
+        "support": 5038.0
+      },
+      "Fatal": {
+        "precision": 0.06950672645739911,
+        "recall": 0.10652920962199312,
+        "f1-score": 0.08412483039348712,
+        "support": 291.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        12743,
+        1980,
+        253
+      ],
+      [
+        3468,
+        1408,
+        162
+      ],
+      [
+        142,
+        118,
+        31
+      ]
+    ]
+  },
+  "original_random_forest_test": {
+    "accuracy": 0.5359271115488796,
+    "macro_f1": 0.34887173442299324,
+    "per_class": {
+      "Slight": {
+        "precision": 0.7965960287001502,
+        "recall": 0.6375534188034188,
+        "f1-score": 0.708256064090201,
+        "support": 14976.0
+      },
+      "Serious": {
+        "precision": 0.3326687553403589,
+        "recall": 0.2318380309646685,
+        "f1-score": 0.27324833313837876,
+        "support": 5038.0
+      },
+      "Fatal": {
+        "precision": 0.034525790349417634,
+        "recall": 0.570446735395189,
+        "f1-score": 0.06511080604040008,
+        "support": 291.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        9548,
+        2284,
+        3144
+      ],
+      [
+        2372,
+        1168,
+        1498
+      ],
+      [
+        66,
+        59,
+        166
+      ]
+    ]
+  },
+  "majority_baseline_test": {
+    "accuracy": 0.737552327013051,
+    "macro_f1": 0.2829851761571384,
+    "per_class": {
+      "Slight": {
+        "precision": 0.737552327013051,
+        "recall": 1.0,
+        "f1-score": 0.8489555284714152,
+        "support": 14976.0
+      },
+      "Serious": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5038.0
+      },
+      "Fatal": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 291.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        14976,
+        0,
+        0
+      ],
+      [
+        5038,
+        0,
+        0
+      ],
+      [
+        291,
+        0,
+        0
+      ]
+    ]
+  },
+  "test_note": "Same holdout as the original experiment. The tuning procedure used only train and validation rows. A future-year test would provide a fresh benchmark."
+}

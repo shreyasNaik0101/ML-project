@@ -1,0 +1,7 @@
+*.pdf binary
+*.png binary
+*.zip binary
+*.gz binary
+*.xlsx binary
+*.joblib binary
+data/*.csv -text
