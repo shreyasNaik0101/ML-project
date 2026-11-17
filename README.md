@@ -54,6 +54,17 @@ python evaluate_unseen_links.py
 
 This uses the included raw source files to rematch road links and keep each count-point link in one partition. All three model families are selected within the new development partitions. Audits and results go to `validation/unseen_links/`; regenerated datasets and bundles are excluded from version control. The report contains the executed metrics. This evaluates new links within the same already inspected source year, not a future population.
 
+### Improve models with grouped cross-validation
+
+See [the experiment guide](docs/EXPERIMENTS.md) for the development-only search, data audit, sampling comparisons, selection requirements and remaining external-data work.
+
+```powershell
+python audit_data.py
+python grouped_experiments.py --trials 3 --sampling none over under
+```
+
+The search uses fixed three-fold road-link groups and fits preprocessing inside each fold. It saves per-class trade-offs and a selected bundle separately from the historical models. Final scoring is opt-in with `--evaluate-inspected-test`; that test has already been inspected and is not fresh external validation.
+
 ### Original preparation and notebooks
 
 ```powershell
