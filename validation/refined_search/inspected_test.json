@@ -1,0 +1,93 @@
+{
+  "status": "Previously inspected 2025 grouped holdout; selected using development OOF only, not fresh external validation",
+  "rows": 3862,
+  "label_order": [
+    "Slight",
+    "Serious",
+    "Fatal"
+  ],
+  "selected": {
+    "accuracy": 0.7128430864836872,
+    "macro_f1": 0.4153229049897311,
+    "per_class": {
+      "Slight": {
+        "precision": 0.8042244640605296,
+        "recall": 0.8554661301140174,
+        "f1-score": 0.8290542736431589,
+        "support": 2982.0
+      },
+      "Serious": {
+        "precision": 0.3624031007751938,
+        "recall": 0.22209026128266032,
+        "f1-score": 0.27540500736377027,
+        "support": 842.0
+      },
+      "Fatal": {
+        "precision": 0.08620689655172414,
+        "recall": 0.39473684210526316,
+        "f1-score": 0.14150943396226415,
+        "support": 38.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2551,
+        324,
+        107
+      ],
+      [
+        603,
+        187,
+        52
+      ],
+      [
+        18,
+        5,
+        15
+      ]
+    ],
+    "fatal_as_slight": 18
+  },
+  "majority": {
+    "accuracy": 0.7721387881926463,
+    "macro_f1": 0.2904734073641146,
+    "per_class": {
+      "Slight": {
+        "precision": 0.7721387881926463,
+        "recall": 1.0,
+        "f1-score": 0.8714202220923437,
+        "support": 2982.0
+      },
+      "Serious": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 842.0
+      },
+      "Fatal": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 38.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        2982,
+        0,
+        0
+      ],
+      [
+        842,
+        0,
+        0
+      ],
+      [
+        38,
+        0,
+        0
+      ]
+    ],
+    "fatal_as_slight": 38
+  }
+}

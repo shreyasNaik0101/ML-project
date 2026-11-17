@@ -12,3 +12,11 @@ validation/unseen_links/link_assignments.csv.gz
 docs/paper/*.aux
 docs/paper/*.log
 docs/paper/*.out
+validation/grouped_search/*.joblib
+validation/grouped_search/development_folds.csv.gz
+validation/data_quality/matching_review.csv
+validation/calendar_search/*.joblib
+validation/calendar_search/development_folds.csv.gz
+validation/refined_search/*.joblib
+validation/refined_search/development_folds.csv.gz
+validation/*_search/search.json
