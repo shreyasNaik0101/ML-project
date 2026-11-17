@@ -30,6 +30,15 @@ class GroupedExperimentTests(unittest.TestCase):
         self.assertIsNone(rules['constrained'])
         self.assertIn('accuracy', rules)
 
+    def test_decision_rule_metrics_match_sklearn(self):
+        probabilities = np.random.default_rng(42).dirichlet(np.ones(3), size=30)
+        actual = LABELS*10
+        for point in decision_rules(actual, probabilities, 0., 0.).values():
+            prediction = np.asarray(LABELS)[(probabilities*np.array([point['weights'][c] for c in LABELS])).argmax(axis=1)]
+            expected = metrics(actual, prediction)
+            self.assertAlmostEqual(point['macro_f1'], expected['macro_f1'])
+            self.assertAlmostEqual(point['accuracy'], expected['accuracy'])
+
     def test_fatal_as_slight_and_fixed_label_order(self):
         result = metrics(['Fatal', 'Serious', 'Slight'], ['Slight']*3)
         self.assertEqual(result['fatal_as_slight'], 1)

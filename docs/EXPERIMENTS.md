@@ -26,7 +26,7 @@ This opt-in command fixes the model and decision rule before scoring test rows. 
 
 ## Implemented comparisons
 
-- Original features versus log1p AADF, time-of-day bands, speed bands, weather/surface combinations, road/speed interactions, and grouped cycle/motorcycle/HGV presence flags. Original individual vehicle flags and cyclical time remain available.
+- Original features versus log1p AADF, time-of-day bands, speed bands, weather/surface combinations, road/speed interactions, and grouped cycle/motorcycle/goods presence flags (the goods group includes HGV codes 20/21 and unknown-weight code 98). Original individual vehicle flags and cyclical time remain available.
 - Randomized tuning for all three existing model families.
 - No resampling, random oversampling, and random undersampling. Resampling occurs only on fold-training rows; validation rows retain their real prevalence. Imputers, encoders and scalers are fitted inside each training pipeline.
 - Serious/Fatal score multipliers, including constrained selection. Scores are not calibrated probabilities.
@@ -45,3 +45,9 @@ For a crash-time density pilot, collect timestamped sensor flow and measured spe
 ## Inference
 
 The selected bundle works with `predict.py` on the original prepared numeric schema. The feature transformer is stored inside the pipeline and applies consistently at inference. Keep `grouped_experiments.py` beside the inference scripts when loading the bundle, and load only trusted joblib files. Existing demo defaults and historical results remain separate until there is evidence to choose a replacement.
+
+## Pilot environment
+
+The committed pilot uses Python 3.12 and scikit-learn 1.8.0; its exact package versions are recorded in `validation/grouped_search/environment.json` and `requirements.txt`. These differ from the historical project pins. Reproduce the pilot in a separate environment using `python -m pip install -r validation/grouped_search/requirements.txt`. Do not compare differences between package versions as model improvements.
+
+For a focused follow-up, use `--families logistic_regression --trials 15` to cover every combination in the current LR grid. The expanded decision grid tests Fatal multipliers up to 16; inspect precision alongside recall. Compressed `search.json.gz` archives retain the full candidate evidence without requiring model binaries in git.

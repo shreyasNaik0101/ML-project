@@ -1,6 +1,7 @@
 """Development-only grouped model search; final evaluation is a separate opt-in step."""
 import argparse
 import hashlib
+import gzip
 import json
 from pathlib import Path
 
@@ -96,19 +97,33 @@ def resample_indices(y, method, seed):
 
 def decision_rules(y, probabilities, minimum_recall, minimum_accuracy):
     """Report three OOF operating points; never consult holdout rows."""
+    actual = pd.Categorical(y, categories=LABELS).codes
+    if (actual < 0).any():
+        raise ValueError('Unknown severity label')
     candidates = []
-    for serious in (.5, 1., 1.5, 2., 3.):
-        for fatal in (.5, 1., 2., 4., 8.):
+    for serious in (.5, .75, 1., 1.25, 1.5, 2., 3.):
+        for fatal in (.5, .75, 1., 1.5, 2., 3., 4., 6., 8., 12., 16.):
             weights = np.array([1., serious, fatal])
-            score = metrics(y, np.asarray(LABELS)[(probabilities*weights).argmax(axis=1)])
-            candidates.append(dict(weights=dict(zip(LABELS, weights.tolist())), **score))
-    feasible = [r for r in candidates if r['accuracy'] >= minimum_accuracy and r['per_class']['Fatal']['recall'] >= minimum_recall]
-    return dict(accuracy=max(candidates, key=lambda r: (r['accuracy'], r['macro_f1'])),
-                macro_f1=max(candidates, key=lambda r: (r['macro_f1'], r['accuracy'])),
-                constrained=max(feasible, key=lambda r: (r['macro_f1'], r['accuracy'])) if feasible else None)
+            prediction = (probabilities*weights).argmax(axis=1)
+            matrix = np.bincount(actual*3+prediction, minlength=9).reshape(3, 3)
+            support, predicted = matrix.sum(axis=1), matrix.sum(axis=0)
+            denominator = support + predicted
+            f1 = np.divide(2*np.diag(matrix), denominator, out=np.zeros(3), where=denominator > 0)
+            candidates.append(dict(weights=weights, accuracy=float(np.trace(matrix)/len(actual)),
+                macro_f1=float(f1.mean()), fatal_recall=float(matrix[2, 2]/support[2]) if support[2] else 0.))
+    feasible = [r for r in candidates if r['accuracy'] >= minimum_accuracy and r['fatal_recall'] >= minimum_recall]
+    def describe(point):
+        if point is None:
+            return None
+        prediction = np.asarray(LABELS)[(probabilities*point['weights']).argmax(axis=1)]
+        return dict(weights=dict(zip(LABELS, point['weights'].tolist())), **metrics(y, prediction))
+    return dict(accuracy=describe(max(candidates, key=lambda r: (r['accuracy'], r['macro_f1']))),
+                macro_f1=describe(max(candidates, key=lambda r: (r['macro_f1'], r['accuracy']))),
+                constrained=describe(max(feasible, key=lambda r: (r['macro_f1'], r['accuracy'])) if feasible else None))
 
 
-def run(data, output, trials=8, minimum_recall=.2895, minimum_accuracy=0., sampling=('none',)):
+
+def run(data, output, trials=8, minimum_recall=.2895, minimum_accuracy=0., sampling=('none',), families=None):
     output.mkdir(parents=True, exist_ok=True)
     for stale in ('selected.joblib', 'inspected_test.json'):
         (output/stale).unlink(missing_ok=True)
@@ -136,6 +151,8 @@ def run(data, output, trials=8, minimum_recall=.2895, minimum_accuracy=0., sampl
         'random_forest': dict(n_estimators=[150, 300, 500], max_depth=[8, 14, None], min_samples_leaf=[5, 10, 20, 40], max_features=['sqrt', .5, 1.], class_weight=weights)}
     results, selected = [], None
     for family, space in spaces.items():
+        if families is not None and family not in families:
+            continue
         for params in ParameterSampler(space, n_iter=trials, random_state=42):
             for engineered in (False, True):
                 for sampling_method in sampling:
@@ -162,6 +179,7 @@ def run(data, output, trials=8, minimum_recall=.2895, minimum_accuracy=0., sampl
                   majority_baseline=metrics(dev[TARGET], ['Slight']*len(dev)), trials=results, selected=selected,
                   data_sha256=hashlib.sha256(pd.util.hash_pandas_object(data, index=False).values.tobytes()).hexdigest())
     (output/'search.json').write_text(json.dumps(report, indent=2)+'\n')
+    (output/'search.json.gz').write_bytes(gzip.compress((output/'search.json').read_bytes(), mtime=0))
     table = []
     for candidate_id, candidate in enumerate(results):
         for rule, point in candidate['rules'].items():
@@ -184,6 +202,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir', type=Path, default=ROOT/'validation/grouped_search')
     parser.add_argument('--trials', type=int, default=8)
+    parser.add_argument('--families', nargs='+', choices=['logistic_regression', 'decision_tree', 'random_forest'])
     parser.add_argument('--minimum-fatal-recall', type=float, default=.2895)
     parser.add_argument('--minimum-accuracy', type=float, default=0.)
     parser.add_argument('--sampling', nargs='+', choices=['none', 'over', 'under'], default=['none'])
@@ -209,7 +228,7 @@ def main():
         if len(data) != len(joined):
             raise ValueError('Missing dates for prepared crashes')
     with threadpool_limits(limits=2):
-        run(data, args.output_dir, args.trials, args.minimum_fatal_recall, args.minimum_accuracy, args.sampling)
+        run(data, args.output_dir, args.trials, args.minimum_fatal_recall, args.minimum_accuracy, args.sampling, args.families)
     if args.evaluate_inspected_test:
         from predict import predict
         test = data.loc[data['split'] == 'test']
