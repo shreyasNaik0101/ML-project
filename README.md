@@ -1,5 +1,7 @@
 # Road Accident Severity Prediction
 
+[Completion and handoff checklist](docs/COMPLETION.md) records delivered work, the project team, release checks and remaining external validation.
+
 [Progress report (PDF)](Road%20Accident%20Severity%20-%20Progress%20Report.pdf) · [Three-model comparison](aadf_experiment/README.md) · [Source data and attribution](data/README.md)
 
 ## Complete workflow
