@@ -43,8 +43,13 @@ class Features(BaseEstimator, TransformerMixin):
         hour = np.mod(np.arctan2(result.time_sin, result.time_cos), 2*np.pi)*24/(2*np.pi)
         result['time_band'] = np.floor(hour/6)
         result['speed_band'] = pd.cut(result.speed_limit, [0, 30, 50, 70, np.inf], labels=False)
-        result['weather_surface'] = result.weather_conditions.astype(str) + ':' + result.road_surface_conditions.astype(str)
-        result['road_speed'] = result.road_type.astype(str) + ':' + result.speed_band.astype(str)
+        # Batch inference normalizes numeric inputs to floats. Use the same
+        # representation during fitting so 1 and 1.0 remain one category.
+        def category(values):
+            return pd.to_numeric(values, errors='raise').astype(float).astype(str)
+
+        result['weather_surface'] = category(result.weather_conditions) + ':' + category(result.road_surface_conditions)
+        result['road_speed'] = category(result.road_type) + ':' + category(result.speed_band)
         for name, codes in {'motorcycles': [2, 3, 4, 5, 23, 97], 'hgv': [20, 21, 98], 'cycles': [1]}.items():
             columns = [f'vehicle_type_{code}' for code in codes if f'vehicle_type_{code}' in result]
             result[name] = result[columns].max(axis=1) if columns else 0

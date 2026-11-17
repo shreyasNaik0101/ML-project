@@ -48,6 +48,10 @@ The selected bundle works with `predict.py` on the original prepared numeric sch
 
 ## Pilot environment
 
+### Engineered bundle compatibility
+
+Engineered interaction categories now use a consistent numeric representation when fitting and scoring. Earlier code could encode integer training codes as `1:1` but float-normalized batch inputs as `1.0:1.0`, causing learned interactions to be ignored. Retrain any engineered-feature bundles produced before this correction; loading an old bundle with the corrected transformer does not migrate its fitted encoder. Original-feature bundles, including the recorded selected LR follow-up, are unaffected. Historical experiment outputs remain records of their original code and environment; rerun engineered comparisons before using them for a new selection. Regression checks cover all three model families through CSV input and model reload.
+
 The committed pilot uses Python 3.12 and scikit-learn 1.8.0; its exact package versions are recorded in `validation/grouped_search/environment.json` and `requirements.txt`. These differ from the historical project pins. Reproduce the pilot in a separate environment using `python -m pip install -r validation/grouped_search/requirements.txt`. Do not compare differences between package versions as model improvements.
 
 For a focused follow-up, use `--families logistic_regression --trials 15` to cover every combination in the current LR grid. The expanded decision grid tests Fatal multipliers up to 16; inspect precision alongside recall. Compressed `search.json.gz` archives retain the full candidate evidence without requiring model binaries in git.
