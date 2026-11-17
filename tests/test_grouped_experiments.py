@@ -35,6 +35,25 @@ class GroupedExperimentTests(unittest.TestCase):
         self.assertEqual(result['fatal_as_slight'], 1)
         self.assertEqual(result['confusion_matrix'], [[1, 0, 0]]*3)
 
+    def test_search_selection_is_independent_of_holdout_labels(self):
+        from contextlib import redirect_stdout
+        from io import StringIO
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        import joblib
+        from grouped_experiments import run
+        data = pd.DataFrame({'collision_index': np.arange(99), 'count_point_id': np.repeat(np.arange(33), 3),
+            'severity': LABELS*33, 'split': ['train']*72 + ['validation']*18 + ['test']*9,
+            'road_type': [1]*99, 'weather_conditions': [1]*99, 'road_surface_conditions': [1]*99,
+            'speed_limit': [30, 50, 70]*33, 'time_sin': [0.]*99, 'time_cos': [1.]*99, AADF: [100.]*99})
+        with TemporaryDirectory() as tmp, redirect_stdout(StringIO()):
+            first = run(data, Path(tmp)/'first', trials=1, minimum_recall=0.)
+            data.loc[data.split == 'test', 'severity'] = 'Slight'
+            second = run(data, Path(tmp)/'second', trials=1, minimum_recall=0.)
+            self.assertEqual(first['selected'], second['selected'])
+            bundle = joblib.load(Path(tmp)/'first/selected.joblib')
+            self.assertEqual(len(bundle['pipeline'].predict(data[bundle['features']])), 99)
+
     def test_calendar_features_are_optional_ablation(self):
         columns = ['road_type', 'weather_conditions', 'road_surface_conditions', 'speed_limit', 'time_sin', 'time_cos', AADF, 'month', 'weekend']
         original = pipeline(columns, 'decision_tree', {'max_depth': 4}, False)

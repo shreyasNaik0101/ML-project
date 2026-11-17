@@ -15,3 +15,5 @@ docs/paper/*.out
 validation/grouped_search/*.joblib
 validation/grouped_search/development_folds.csv.gz
 validation/data_quality/matching_review.csv
+validation/calendar_search/*.joblib
+validation/calendar_search/development_folds.csv.gz
