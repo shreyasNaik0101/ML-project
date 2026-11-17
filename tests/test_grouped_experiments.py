@@ -6,6 +6,38 @@ from modeling import LABELS, AADF
 
 
 class GroupedExperimentTests(unittest.TestCase):
+    def test_engineered_predictions_match_batch_csv_and_reload(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        import joblib
+        from predict import predict, read_input
+
+        rows = pd.DataFrame({
+            'road_type': [1, 2, 3]*6, 'weather_conditions': [1, 2, 3]*6,
+            'road_surface_conditions': [1, 2, 3]*6,
+            'speed_limit': [30, 50, 70]*6,
+            'time_sin': [0.]*18, 'time_cos': [1.]*18, AADF: [100.]*18})
+        floating = rows.astype(float)
+        floating.loc[0, 'road_surface_conditions'] = np.nan
+        mixed = rows.copy()
+        mixed.loc[0, 'road_surface_conditions'] = np.nan
+        pd.testing.assert_frame_equal(Features(True).transform(mixed)[['weather_surface', 'road_speed']],
+                                      Features(True).transform(floating)[['weather_surface', 'road_speed']])
+        for family in ['logistic_regression', 'decision_tree', 'random_forest']:
+            with self.subTest(family=family), TemporaryDirectory() as tmp:
+                model = pipeline(list(rows), family, {}, True).fit(rows, LABELS*6)
+                bundle = {'pipeline': model, 'features': list(rows),
+                          'decision_weights': {label: 1. for label in LABELS}}
+                expected = model.predict_proba(rows)
+                path = Path(tmp)/'model.joblib'
+                joblib.dump(bundle, path)
+                csv = Path(tmp)/'input.csv'
+                rows.to_csv(csv, index=False)
+                actual = predict(joblib.load(path), read_input(csv))
+                for index, label in enumerate(model.classes_):
+                    np.testing.assert_allclose(actual[f'raw_score_{label.lower()}'], expected[:, index])
+                np.testing.assert_array_equal(actual.predicted_severity, model.predict(rows))
+
     def test_folds_keep_links_together(self):
         data = pd.DataFrame({'collision_index': np.arange(90), 'count_point_id': np.repeat(np.arange(30), 3), 'severity': LABELS*30})
         folds = folds_for(data)
