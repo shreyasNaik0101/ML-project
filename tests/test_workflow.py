@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
 from modeling import choose_score_weights
-from predict import predict
+from predict import predict, read_input
 from scenario import prepare
 from train_models import validate_data
 from evaluate_unseen_links import partition_links
@@ -60,6 +60,57 @@ class WorkflowTests(unittest.TestCase):
         for value in ([], None, dict(scenario, time=None), dict(scenario, vehicles=[{}])):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 prepare(value, bundle['features'])
+
+    def test_batch_rejects_impossible_speed_and_clock(self):
+        bundle = joblib.load(ROOT / 'artifacts/logistic_regression_without_aadf.joblib')
+        for change in ({'speed_limit': -1}, {'speed_limit': 999},
+                       {'time_sin': 2., 'time_cos': 2.}, {'time_sin': np.nan}):
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                predict(bundle, self.data.head(1).assign(**change))
+        rows = self.data.head(1).assign(speed_limit=np.nan, time_sin=np.nan, time_cos=np.nan)
+        self.assertEqual(len(predict(bundle, rows)), 1)
+
+    def test_batch_rejects_empty_and_duplicate_columns(self):
+        bundle = joblib.load(ROOT / 'artifacts/logistic_regression_without_aadf.joblib')
+        for rows in (self.data.head(0), pd.concat([self.data.head(1), self.data[['speed_limit']].head(1)], axis=1)):
+            with self.assertRaises(ValueError):
+                predict(bundle, rows)
+
+    def test_unknown_surface_and_strict_scenario_types(self):
+        import json
+        scenario = json.loads((ROOT / 'examples/scenario.json').read_text())
+        bundle = joblib.load(ROOT / 'artifacts/logistic_regression_without_aadf.joblib')
+        rows = prepare(dict(scenario, surface='unknown'), bundle['features'])
+        self.assertTrue(pd.isna(rows.loc[0, 'road_surface_conditions']))
+        self.assertEqual(len(predict(bundle, rows)), 1)
+        for change in ({'time': '1:2'}, {'weather': []}, {'surface': {}}, {'road_type': None}):
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                prepare(dict(scenario, **change), bundle['features'])
+
+    def test_options_command_does_not_load_model(self):
+        import json
+        import subprocess
+        import sys
+        result = subprocess.run([sys.executable, str(ROOT / 'scenario.py'), '--options',
+                                 '--model', str(ROOT / 'missing-model.joblib')],
+                                text=True, capture_output=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        options = json.loads(result.stdout)
+        self.assertIn('unknown', options['surface'])
+        self.assertEqual(options['speed_limit_mph'], [20, 30, 40, 50, 60, 70])
+
+    def test_csv_header_validation_before_pandas_renaming(self):
+        import tempfile
+        import gzip
+        with tempfile.TemporaryDirectory() as directory:
+            for name in ('rows.csv', 'rows.csv.gz'):
+                path = Path(directory) / name
+                opener = gzip.open if name.endswith('.gz') else open
+                with opener(path, 'wt', encoding='utf-8') as stream:
+                    stream.write('speed_limit,speed_limit\n30,40\n')
+                with self.assertRaisesRegex(ValueError, 'unique'):
+                    read_input(path)
+        self.assertEqual(len(read_input(ROOT / 'examples/prepared_crashes.csv')), 5)
 
     def test_weights_follow_class_order(self):
         classes = ['Fatal', 'Serious', 'Slight']
