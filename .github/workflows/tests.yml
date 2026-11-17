@@ -18,3 +18,20 @@ jobs:
       - run: python predict.py --input examples/prepared_crashes.csv --output /tmp/predictions.csv
       - run: python scenario.py --options
       - run: python scenario.py --input examples/scenario.json
+  grouped-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: validation/refined_search/requirements.txt
+      - run: python -m pip install -r validation/refined_search/requirements.txt
+      # Refit in this environment rather than trusting cross-version pickles.
+      - run: python train_models.py --output-dir artifacts
+      - run: python -m unittest discover -s tests -v
+      - run: python predict.py --input examples/prepared_crashes.csv --output /tmp/grouped-environment-predictions.csv
+      - run: python scenario.py --input examples/scenario.json
