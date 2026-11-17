@@ -56,7 +56,7 @@ This uses the included raw source files to rematch road links and keep each coun
 
 ### Improve models with grouped cross-validation
 
-See [the experiment guide](docs/EXPERIMENTS.md) for the development-only search, data audit, sampling comparisons, selection requirements and remaining external-data work.
+See [measured follow-up results](validation/RESULTS.md) and [the experiment guide](docs/EXPERIMENTS.md) for the development-only search, data audit, sampling comparisons, selection requirements and remaining external-data work.
 
 ```powershell
 python audit_data.py
