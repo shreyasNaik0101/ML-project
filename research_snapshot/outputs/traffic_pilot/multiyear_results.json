@@ -1,0 +1,149 @@
+{
+  "candidate_counts_by_year": {
+    "2022": 289,
+    "2023": 283,
+    "2024": 236
+  },
+  "reading_status": {
+    "usable": 502,
+    "invalid_or_missing_traffic_values": 280,
+    "missing_download": 26
+  },
+  "usable_counts_by_year": {
+    "2022": 183,
+    "2023": 171,
+    "2024": 148
+  },
+  "excluded_overlapping_training_sensor_rows": 54,
+  "train_size": 300,
+  "test_size": 148,
+  "train_counts": {
+    "Slight": 238,
+    "Serious": 57,
+    "Fatal": 5
+  },
+  "test_counts": {
+    "Slight": 112,
+    "Serious": 30,
+    "Fatal": 6
+  },
+  "predict_slight_accuracy": 0.7567567567567568,
+  "comparisons": {
+    "aadf": {
+      "accuracy": 0.7094594594594594,
+      "per_class": {
+        "Slight": {
+          "precision": 0.7692307692307693,
+          "recall": 0.8928571428571429,
+          "f1-score": 0.8264462809917356,
+          "support": 112.0
+        },
+        "Serious": {
+          "precision": 0.2777777777777778,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.20833333333333334,
+          "support": 30.0
+        },
+        "Fatal": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 6.0
+        },
+        "accuracy": 0.7094594594594594,
+        "macro avg": {
+          "precision": 0.349002849002849,
+          "recall": 0.3531746031746032,
+          "f1-score": 0.34492653810835633,
+          "support": 148.0
+        },
+        "weighted avg": {
+          "precision": 0.6384268884268884,
+          "recall": 0.7094594594594594,
+          "f1-score": 0.6676485369667188,
+          "support": 148.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          100,
+          12,
+          0
+        ],
+        [
+          25,
+          5,
+          0
+        ],
+        [
+          5,
+          1,
+          0
+        ]
+      ]
+    },
+    "sensor_density_proxy": {
+      "accuracy": 0.7027027027027027,
+      "per_class": {
+        "Slight": {
+          "precision": 0.7593984962406015,
+          "recall": 0.9017857142857143,
+          "f1-score": 0.8244897959183674,
+          "support": 112.0
+        },
+        "Serious": {
+          "precision": 0.2,
+          "recall": 0.1,
+          "f1-score": 0.13333333333333333,
+          "support": 30.0
+        },
+        "Fatal": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 6.0
+        },
+        "accuracy": 0.7027027027027027,
+        "macro avg": {
+          "precision": 0.31979949874686714,
+          "recall": 0.3339285714285714,
+          "f1-score": 0.31927437641723355,
+          "support": 148.0
+        },
+        "weighted avg": {
+          "precision": 0.6152204836415363,
+          "recall": 0.7027027027027027,
+          "f1-score": 0.6509652509652509,
+          "support": 148.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          101,
+          11,
+          0
+        ],
+        [
+          27,
+          3,
+          0
+        ],
+        [
+          5,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "paired_accuracy_difference": {
+    "sensor_minus_aadf": -0.006756756756756757,
+    "bootstrap_95_percent_interval": [
+      -0.060810810810810814,
+      0.0472972972972973
+    ],
+    "sensor_only_correct": 9,
+    "aadf_only_correct": 10,
+    "note": "Exploratory row bootstrap; ignores correlations between nearby road sites."
+  }
+}

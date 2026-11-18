@@ -1,0 +1,23 @@
+{
+  "2022": {
+    "aadf_rows": 20506,
+    "has_nearby_cardinal_sensor": 465,
+    "matched": 289,
+    "vehicle_direction_missing": 31,
+    "no_direction_and_link_match": 145
+  },
+  "2023": {
+    "aadf_rows": 20356,
+    "has_nearby_cardinal_sensor": 476,
+    "matched": 283,
+    "vehicle_direction_missing": 38,
+    "no_direction_and_link_match": 155
+  },
+  "2024": {
+    "aadf_rows": 19176,
+    "has_nearby_cardinal_sensor": 415,
+    "no_direction_and_link_match": 147,
+    "matched": 236,
+    "vehicle_direction_missing": 32
+  }
+}

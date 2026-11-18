@@ -1,0 +1,115 @@
+{
+  "criterion": "Maximum validation macro F1 among decision weights with accuracy >=72% and fatal recall >=10%; both constraints on 2024 only.",
+  "weights": {
+    "Fatal": 9.0,
+    "Serious": 2.6,
+    "Slight": 1.0
+  },
+  "validation": {
+    "accuracy": 0.7216312056737588,
+    "report": {
+      "Fatal": {
+        "precision": 0.17412935323383086,
+        "recall": 0.12867647058823528,
+        "f1-score": 0.14799154334038056,
+        "support": 272.0
+      },
+      "Serious": {
+        "precision": 0.35994659546061414,
+        "recall": 0.3311225743060673,
+        "f1-score": 0.34493346980552714,
+        "support": 4071.0
+      },
+      "Slight": {
+        "precision": 0.8177938279711097,
+        "recall": 0.839681790602036,
+        "f1-score": 0.8285932874297309,
+        "support": 14833.0
+      },
+      "accuracy": 0.7216312056737588,
+      "macro avg": {
+        "precision": 0.45062325888851823,
+        "recall": 0.4331602784987795,
+        "f1-score": 0.4405061001918795,
+        "support": 19176.0
+      },
+      "weighted avg": {
+        "precision": 0.7114644151280366,
+        "recall": 0.7216312056737588,
+        "f1-score": 0.7162600170949146,
+        "support": 19176.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        35,
+        126,
+        111
+      ],
+      [
+        59,
+        1348,
+        2664
+      ],
+      [
+        107,
+        2271,
+        12455
+      ]
+    ]
+  },
+  "test": {
+    "accuracy": 0.7081103766656175,
+    "report": {
+      "Fatal": {
+        "precision": 0.11734693877551021,
+        "recall": 0.11274509803921569,
+        "f1-score": 0.115,
+        "support": 204.0
+      },
+      "Serious": {
+        "precision": 0.35523357481888584,
+        "recall": 0.33704669352927236,
+        "f1-score": 0.34590124057406957,
+        "support": 4219.0
+      },
+      "Slight": {
+        "precision": 0.8109399179169751,
+        "recall": 0.8233485893845208,
+        "f1-score": 0.8170971459562063,
+        "support": 14639.0
+      },
+      "accuracy": 0.7081103766656175,
+      "macro avg": {
+        "precision": 0.4278401438371237,
+        "recall": 0.4243801269843363,
+        "f1-score": 0.42599946217675866,
+        "support": 19062.0
+      },
+      "weighted avg": {
+        "precision": 0.7026554761335474,
+        "recall": 0.7081103766656175,
+        "f1-score": 0.7052933823121867,
+        "support": 19062.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        23,
+        107,
+        74
+      ],
+      [
+        61,
+        1422,
+        2736
+      ],
+      [
+        112,
+        2474,
+        12053
+      ]
+    ]
+  },
+  "test_note": "2025 was inspected in earlier experiments and road links may overlap across years."
+}

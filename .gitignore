@@ -20,3 +20,6 @@ validation/calendar_search/development_folds.csv.gz
 validation/refined_search/*.joblib
 validation/refined_search/development_folds.csv.gz
 validation/*_search/search.json
+research_snapshot/work/yearly-data/
+research_snapshot/work/traffic_pilot/readings/
+research_snapshot/work/traffic_pilot/sites.json

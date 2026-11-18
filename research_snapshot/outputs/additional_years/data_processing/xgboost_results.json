@@ -1,0 +1,220 @@
+{
+  "selected": {
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "sample_weighting": "none",
+    "validation_macro_f1": 0.4431856231072442,
+    "decision_weights": {
+      "Fatal": 12.0,
+      "Serious": 3.0,
+      "Slight": 1.0
+    }
+  },
+  "validation_trials": [
+    {
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "sample_weighting": "none",
+      "validation_macro_f1": 0.4413173717726002,
+      "decision_weights": {
+        "Fatal": 12.0,
+        "Serious": 3.0,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "sample_weighting": "moderate",
+      "validation_macro_f1": 0.4323698065731288,
+      "decision_weights": {
+        "Fatal": 4.0,
+        "Serious": 1.5,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "sample_weighting": "none",
+      "validation_macro_f1": 0.4420797973922279,
+      "decision_weights": {
+        "Fatal": 12.0,
+        "Serious": 3.0,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "sample_weighting": "moderate",
+      "validation_macro_f1": 0.43961917708959436,
+      "decision_weights": {
+        "Fatal": 2.0,
+        "Serious": 1.5,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "sample_weighting": "none",
+      "validation_macro_f1": 0.4431856231072442,
+      "decision_weights": {
+        "Fatal": 12.0,
+        "Serious": 3.0,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "sample_weighting": "moderate",
+      "validation_macro_f1": 0.4330830130284457,
+      "decision_weights": {
+        "Fatal": 4.0,
+        "Serious": 1.5,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.1,
+      "sample_weighting": "none",
+      "validation_macro_f1": 0.4295147526751166,
+      "decision_weights": {
+        "Fatal": 12.0,
+        "Serious": 3.0,
+        "Slight": 1.0
+      }
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.1,
+      "sample_weighting": "moderate",
+      "validation_macro_f1": 0.4328706814741247,
+      "decision_weights": {
+        "Fatal": 2.0,
+        "Serious": 1.5,
+        "Slight": 1.0
+      }
+    }
+  ],
+  "xgboost_test": {
+    "accuracy": 0.6694995278564684,
+    "report": {
+      "Fatal": {
+        "precision": 0.10638297872340426,
+        "recall": 0.14705882352941177,
+        "f1-score": 0.12345679012345678,
+        "support": 204.0
+      },
+      "Serious": {
+        "precision": 0.3364812871633438,
+        "recall": 0.4560322351268073,
+        "f1-score": 0.38723960954010267,
+        "support": 4219.0
+      },
+      "Slight": {
+        "precision": 0.827438370846731,
+        "recall": 0.738301796570804,
+        "f1-score": 0.7803328399696762,
+        "support": 14639.0
+      },
+      "accuracy": 0.6694995278564684,
+      "macro avg": {
+        "precision": 0.423434212244493,
+        "recall": 0.44713095174234097,
+        "f1-score": 0.43034307987774517,
+        "support": 19062.0
+      },
+      "weighted avg": {
+        "precision": 0.7110579681579592,
+        "recall": 0.6694995278564684,
+        "f1-score": 0.6862995248216854,
+        "support": 19062.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        30,
+        124,
+        50
+      ],
+      [
+        91,
+        1924,
+        2204
+      ],
+      [
+        161,
+        3670,
+        10808
+      ]
+    ]
+  },
+  "gradient_boosting_test": {
+    "accuracy": 0.6700241317805057,
+    "report": {
+      "Fatal": {
+        "precision": 0.10158730158730159,
+        "recall": 0.1568627450980392,
+        "f1-score": 0.1233140655105973,
+        "support": 204.0
+      },
+      "Serious": {
+        "precision": 0.33471745802491426,
+        "recall": 0.43944062574069687,
+        "f1-score": 0.37999590079934414,
+        "support": 4219.0
+      },
+      "Slight": {
+        "precision": 0.8241974560872198,
+        "recall": 0.7436300293735911,
+        "f1-score": 0.7818436456350774,
+        "support": 14639.0
+      },
+      "accuracy": 0.6700241317805057,
+      "macro avg": {
+        "precision": 0.4201674052331452,
+        "recall": 0.44664446673744235,
+        "f1-score": 0.4283845373150063,
+        "support": 19062.0
+      },
+      "weighted avg": {
+        "precision": 0.7081273384005736,
+        "recall": 0.6700241317805057,
+        "f1-score": 0.6858549944018725,
+        "support": 19062.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        32,
+        118,
+        54
+      ],
+      [
+        97,
+        1854,
+        2268
+      ],
+      [
+        186,
+        3567,
+        10886
+      ]
+    ]
+  },
+  "class_order": [
+    "Fatal",
+    "Serious",
+    "Slight"
+  ],
+  "test_rows": 19062,
+  "note": "2025 has been inspected in earlier project experiments; roads may recur across years.",
+  "versions": {
+    "xgboost": "3.4.1",
+    "sklearn": "1.9.1"
+  }
+}

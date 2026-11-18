@@ -1,0 +1,492 @@
+{
+  "baseline": {
+    "validation": {
+      "accuracy": 0.6963913224864414,
+      "report": {
+        "Slight": {
+          "precision": 0.8123348017621146,
+          "recall": 0.8080631025416302,
+          "f1-score": 0.8101933216168717,
+          "support": 14833.0
+        },
+        "Serious": {
+          "precision": 0.32335037740443145,
+          "recall": 0.32620977646769833,
+          "f1-score": 0.3247737833211054,
+          "support": 4071.0
+        },
+        "Fatal": {
+          "precision": 0.12738853503184713,
+          "recall": 0.14705882352941177,
+          "f1-score": 0.13651877133105803,
+          "support": 272.0
+        },
+        "accuracy": 0.6963913224864414,
+        "macro avg": {
+          "precision": 0.4210245713994644,
+          "recall": 0.42711056751291343,
+          "f1-score": 0.4238286254230117,
+          "support": 19176.0
+        },
+        "weighted avg": {
+          "precision": 0.6988095109761967,
+          "recall": 0.6963913224864414,
+          "f1-score": 0.6975847265981083,
+          "support": 19176.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          11986,
+          2666,
+          181
+        ],
+        [
+          2650,
+          1328,
+          93
+        ],
+        [
+          119,
+          113,
+          40
+        ]
+      ]
+    },
+    "decision_weights": {
+      "Fatal": 12,
+      "Serious": 3,
+      "Slight": 1
+    },
+    "features": [
+      "road_type",
+      "weather_conditions",
+      "road_surface_conditions",
+      "speed_limit",
+      "time_sin",
+      "time_cos",
+      "vehicle_type_1",
+      "vehicle_type_10",
+      "vehicle_type_11",
+      "vehicle_type_16",
+      "vehicle_type_17",
+      "vehicle_type_18",
+      "vehicle_type_19",
+      "vehicle_type_2",
+      "vehicle_type_20",
+      "vehicle_type_21",
+      "vehicle_type_22",
+      "vehicle_type_23",
+      "vehicle_type_3",
+      "vehicle_type_33",
+      "vehicle_type_4",
+      "vehicle_type_5",
+      "vehicle_type_8",
+      "vehicle_type_9",
+      "vehicle_type_90",
+      "vehicle_type_97",
+      "vehicle_type_98",
+      "vehicle_type_99",
+      "vehicle_type_missing",
+      "aadf_motor_vehicles_per_day"
+    ],
+    "test": {
+      "accuracy": 0.6937886895393978,
+      "report": {
+        "Slight": {
+          "precision": 0.8096845295495247,
+          "recall": 0.8029920076507958,
+          "f1-score": 0.8063243817951092,
+          "support": 14639.0
+        },
+        "Serious": {
+          "precision": 0.3402744912446758,
+          "recall": 0.34083906138895476,
+          "f1-score": 0.34055654233274124,
+          "support": 4219.0
+        },
+        "Fatal": {
+          "precision": 0.10062893081761007,
+          "recall": 0.1568627450980392,
+          "f1-score": 0.12260536398467432,
+          "support": 204.0
+        },
+        "accuracy": 0.6937886895393978,
+        "macro avg": {
+          "precision": 0.4168626505372702,
+          "recall": 0.43356460471259667,
+          "f1-score": 0.42316209603750826,
+          "support": 19062.0
+        },
+        "weighted avg": {
+          "precision": 0.6982015637668436,
+          "recall": 0.6937886895393978,
+          "f1-score": 0.6959186953862823,
+          "support": 19062.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          11755,
+          2702,
+          182
+        ],
+        [
+          2677,
+          1438,
+          104
+        ],
+        [
+          86,
+          86,
+          32
+        ]
+      ]
+    }
+  },
+  "validated_categories": {
+    "validation": {
+      "accuracy": 0.6963913224864414,
+      "report": {
+        "Slight": {
+          "precision": 0.8123348017621146,
+          "recall": 0.8080631025416302,
+          "f1-score": 0.8101933216168717,
+          "support": 14833.0
+        },
+        "Serious": {
+          "precision": 0.32335037740443145,
+          "recall": 0.32620977646769833,
+          "f1-score": 0.3247737833211054,
+          "support": 4071.0
+        },
+        "Fatal": {
+          "precision": 0.12738853503184713,
+          "recall": 0.14705882352941177,
+          "f1-score": 0.13651877133105803,
+          "support": 272.0
+        },
+        "accuracy": 0.6963913224864414,
+        "macro avg": {
+          "precision": 0.4210245713994644,
+          "recall": 0.42711056751291343,
+          "f1-score": 0.4238286254230117,
+          "support": 19176.0
+        },
+        "weighted avg": {
+          "precision": 0.6988095109761967,
+          "recall": 0.6963913224864414,
+          "f1-score": 0.6975847265981083,
+          "support": 19176.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          11986,
+          2666,
+          181
+        ],
+        [
+          2650,
+          1328,
+          93
+        ],
+        [
+          119,
+          113,
+          40
+        ]
+      ]
+    },
+    "decision_weights": {
+      "Fatal": 12,
+      "Serious": 3,
+      "Slight": 1
+    },
+    "features": [
+      "road_type",
+      "weather_conditions",
+      "road_surface_conditions",
+      "speed_limit",
+      "time_sin",
+      "time_cos",
+      "vehicle_type_1",
+      "vehicle_type_10",
+      "vehicle_type_11",
+      "vehicle_type_16",
+      "vehicle_type_17",
+      "vehicle_type_18",
+      "vehicle_type_19",
+      "vehicle_type_2",
+      "vehicle_type_20",
+      "vehicle_type_21",
+      "vehicle_type_22",
+      "vehicle_type_23",
+      "vehicle_type_3",
+      "vehicle_type_33",
+      "vehicle_type_4",
+      "vehicle_type_5",
+      "vehicle_type_8",
+      "vehicle_type_9",
+      "vehicle_type_90",
+      "vehicle_type_97",
+      "vehicle_type_98",
+      "vehicle_type_99",
+      "vehicle_type_missing",
+      "aadf_motor_vehicles_per_day"
+    ]
+  },
+  "time_representation": {
+    "validation": {
+      "accuracy": 0.6991551939924906,
+      "report": {
+        "Slight": {
+          "precision": 0.8129593419189536,
+          "recall": 0.8128497269601564,
+          "f1-score": 0.8129045307443366,
+          "support": 14833.0
+        },
+        "Serious": {
+          "precision": 0.3268608414239482,
+          "recall": 0.3225251780889216,
+          "f1-score": 0.32467853610286845,
+          "support": 4071.0
+        },
+        "Fatal": {
+          "precision": 0.11280487804878049,
+          "recall": 0.13602941176470587,
+          "f1-score": 0.12333333333333334,
+          "support": 272.0
+        },
+        "accuracy": 0.6991551939924906,
+        "macro avg": {
+          "precision": 0.4175416871305608,
+          "recall": 0.42380143893792793,
+          "f1-score": 0.42030546672684604,
+          "support": 19176.0
+        },
+        "weighted avg": {
+          "precision": 0.6998310039085314,
+          "recall": 0.6991551939924906,
+          "f1-score": 0.6994746501706397,
+          "support": 19176.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          12057,
+          2585,
+          191
+        ],
+        [
+          2658,
+          1313,
+          100
+        ],
+        [
+          116,
+          119,
+          37
+        ]
+      ]
+    },
+    "decision_weights": {
+      "Fatal": 12,
+      "Serious": 3,
+      "Slight": 1
+    },
+    "features": [
+      "road_type",
+      "weather_conditions",
+      "road_surface_conditions",
+      "speed_limit",
+      "time_sin",
+      "time_cos",
+      "vehicle_type_1",
+      "vehicle_type_10",
+      "vehicle_type_11",
+      "vehicle_type_16",
+      "vehicle_type_17",
+      "vehicle_type_18",
+      "vehicle_type_19",
+      "vehicle_type_2",
+      "vehicle_type_20",
+      "vehicle_type_21",
+      "vehicle_type_22",
+      "vehicle_type_23",
+      "vehicle_type_3",
+      "vehicle_type_33",
+      "vehicle_type_4",
+      "vehicle_type_5",
+      "vehicle_type_8",
+      "vehicle_type_9",
+      "vehicle_type_90",
+      "vehicle_type_97",
+      "vehicle_type_98",
+      "vehicle_type_99",
+      "vehicle_type_missing",
+      "aadf_motor_vehicles_per_day",
+      "time_sin_2",
+      "time_cos_2",
+      "time_sin_3",
+      "time_cos_3"
+    ]
+  },
+  "vehicle_composition_optional": {
+    "validation": {
+      "accuracy": 0.684084272006675,
+      "report": {
+        "Slight": {
+          "precision": 0.8320341226650978,
+          "recall": 0.7627587136789591,
+          "f1-score": 0.7958918082374873,
+          "support": 14833.0
+        },
+        "Serious": {
+          "precision": 0.3363151884278645,
+          "recall": 0.4340456890198968,
+          "f1-score": 0.3789812332439678,
+          "support": 4071.0
+        },
+        "Fatal": {
+          "precision": 0.11419753086419752,
+          "recall": 0.13602941176470587,
+          "f1-score": 0.12416107382550336,
+          "support": 272.0
+        },
+        "accuracy": 0.684084272006675,
+        "macro avg": {
+          "precision": 0.42751561398571997,
+          "recall": 0.44427793815452055,
+          "f1-score": 0.43301137176898613,
+          "support": 19176.0
+        },
+        "weighted avg": {
+          "precision": 0.716612588755543,
+          "recall": 0.684084272006675,
+          "f1-score": 0.6978550064770221,
+          "support": 19176.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          11314,
+          3340,
+          179
+        ],
+        [
+          2196,
+          1767,
+          108
+        ],
+        [
+          88,
+          147,
+          37
+        ]
+      ]
+    },
+    "decision_weights": {
+      "Fatal": 12,
+      "Serious": 3,
+      "Slight": 1
+    },
+    "features": [
+      "road_type",
+      "weather_conditions",
+      "road_surface_conditions",
+      "speed_limit",
+      "time_sin",
+      "time_cos",
+      "vehicle_type_1",
+      "vehicle_type_10",
+      "vehicle_type_11",
+      "vehicle_type_16",
+      "vehicle_type_17",
+      "vehicle_type_18",
+      "vehicle_type_19",
+      "vehicle_type_2",
+      "vehicle_type_20",
+      "vehicle_type_21",
+      "vehicle_type_22",
+      "vehicle_type_23",
+      "vehicle_type_3",
+      "vehicle_type_33",
+      "vehicle_type_4",
+      "vehicle_type_5",
+      "vehicle_type_8",
+      "vehicle_type_9",
+      "vehicle_type_90",
+      "vehicle_type_97",
+      "vehicle_type_98",
+      "vehicle_type_99",
+      "vehicle_type_missing",
+      "aadf_motor_vehicles_per_day",
+      "time_sin_2",
+      "time_cos_2",
+      "time_sin_3",
+      "time_cos_3",
+      "vehicle_composition_cycle",
+      "vehicle_composition_motorcycle",
+      "vehicle_composition_car_taxi",
+      "vehicle_composition_bus",
+      "vehicle_composition_goods",
+      "vehicle_composition_other"
+    ],
+    "test": {
+      "accuracy": 0.6700241317805057,
+      "report": {
+        "Slight": {
+          "precision": 0.8241974560872198,
+          "recall": 0.7436300293735911,
+          "f1-score": 0.7818436456350774,
+          "support": 14639.0
+        },
+        "Serious": {
+          "precision": 0.33471745802491426,
+          "recall": 0.43944062574069687,
+          "f1-score": 0.37999590079934414,
+          "support": 4219.0
+        },
+        "Fatal": {
+          "precision": 0.10158730158730159,
+          "recall": 0.1568627450980392,
+          "f1-score": 0.1233140655105973,
+          "support": 204.0
+        },
+        "accuracy": 0.6700241317805057,
+        "macro avg": {
+          "precision": 0.4201674052331453,
+          "recall": 0.44664446673744235,
+          "f1-score": 0.4283845373150063,
+          "support": 19062.0
+        },
+        "weighted avg": {
+          "precision": 0.7081273384005736,
+          "recall": 0.6700241317805057,
+          "f1-score": 0.6858549944018725,
+          "support": 19062.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          10886,
+          3567,
+          186
+        ],
+        [
+          2268,
+          1854,
+          97
+        ],
+        [
+          54,
+          118,
+          32
+        ]
+      ]
+    }
+  },
+  "selected_variant": "vehicle_composition_optional",
+  "selected_strict_variant": "baseline"
+}

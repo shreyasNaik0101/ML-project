@@ -1,0 +1,155 @@
+{
+  "candidates": 1795,
+  "aadf_overlap_candidates": 508,
+  "traffic_reading_status": {
+    "usable": 320,
+    "no_eligible_reading": 180,
+    "download_missing": 6,
+    "stale_reading": 2
+  },
+  "test_period": "2024-10-01 to 2024-12-31",
+  "cohorts": {
+    "all_candidates": {
+      "train_size": 210,
+      "test_size": 90,
+      "training_rows_removed_due_to_test_site": 20,
+      "train_counts": {
+        "Slight": 159,
+        "Serious": 42,
+        "Fatal": 9
+      },
+      "test_counts": {
+        "Slight": 70,
+        "Serious": 19,
+        "Fatal": 1
+      },
+      "predict_slight_accuracy": 0.7777777777777778,
+      "results": {
+        "aadf": {
+          "accuracy": 0.6777777777777778,
+          "per_class": {
+            "Slight": {
+              "precision": 0.7763157894736842,
+              "recall": 0.8428571428571429,
+              "f1-score": 0.8082191780821918,
+              "support": 70.0
+            },
+            "Serious": {
+              "precision": 0.16666666666666666,
+              "recall": 0.10526315789473684,
+              "f1-score": 0.12903225806451613,
+              "support": 19.0
+            },
+            "Fatal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 1.0
+            },
+            "accuracy": 0.6777777777777778,
+            "macro avg": {
+              "precision": 0.31432748538011696,
+              "recall": 0.31604010025062657,
+              "f1-score": 0.312417145382236,
+              "support": 90.0
+            },
+            "weighted avg": {
+              "precision": 0.6389863547758284,
+              "recall": 0.6777777777777778,
+              "f1-score": 0.6558550596553248,
+              "support": 90.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              59,
+              10,
+              1
+            ],
+            [
+              16,
+              2,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ]
+        },
+        "sensor_density_proxy": {
+          "accuracy": 0.6666666666666666,
+          "per_class": {
+            "Slight": {
+              "precision": 0.7837837837837838,
+              "recall": 0.8285714285714286,
+              "f1-score": 0.8055555555555556,
+              "support": 70.0
+            },
+            "Serious": {
+              "precision": 0.15384615384615385,
+              "recall": 0.10526315789473684,
+              "f1-score": 0.125,
+              "support": 19.0
+            },
+            "Fatal": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1-score": 0.0,
+              "support": 1.0
+            },
+            "accuracy": 0.6666666666666666,
+            "macro avg": {
+              "precision": 0.3125433125433125,
+              "recall": 0.3112781954887218,
+              "f1-score": 0.3101851851851852,
+              "support": 90.0
+            },
+            "weighted avg": {
+              "precision": 0.6420882420882421,
+              "recall": 0.6666666666666667,
+              "f1-score": 0.6529320987654321,
+              "support": 90.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              58,
+              11,
+              1
+            ],
+            [
+              15,
+              2,
+              2
+            ],
+            [
+              1,
+              0,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    "direction_compatible": {
+      "train_size": 80,
+      "test_size": 33,
+      "training_rows_removed_due_to_test_site": 6,
+      "train_counts": {
+        "Slight": 56,
+        "Serious": 19,
+        "Fatal": 5
+      },
+      "test_counts": {
+        "Slight": 25,
+        "Serious": 7,
+        "Fatal": 1
+      },
+      "predict_slight_accuracy": 0.7575757575757576,
+      "results": {},
+      "comparison_not_run": "Insufficient data or missing training classes."
+    }
+  }
+}

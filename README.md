@@ -2,6 +2,8 @@
 
 [Progress report (PDF)](Road%20Accident%20Severity%20-%20Progress%20Report.pdf) · [Three-model comparison](aadf_experiment/README.md) · [Source data and attribution](data/README.md)
 
+[Later multi-year data and traffic sensor experiments](research_snapshot/README.md)
+
 ## Complete workflow
 
 Python 3.12 is recommended. Clone the project, create an isolated environment, and install the recorded dependencies:
