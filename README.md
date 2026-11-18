@@ -22,6 +22,8 @@ If PowerShell blocks activation, use Command Prompt with `.venv\Scripts\activate
 
 After completing setup, Windows users can also double-click `Start_Demo.bat` in this project folder to start JupyterLab.
 
+In JupyterLab, double-click a notebook name on the left. Click inside its first cell and then click the **Run (▶)** button at the top. Repeat for the following cells, in order. **Shift + Enter** also runs the selected cell and moves to the next one. A notebook opened as a preview on GitHub cannot execute cells; use JupyterLab for the live demo.
+
 Each model notebook is self-contained. It trains on 2021-2023, chooses decision multipliers using 2024, refits on 2021-2024, and evaluates on 2025. Each model is fitted twice; the Random Forest notebook can take several minutes. Practice a full run on the demonstration computer and keep saved outputs visible in case of delays. Saved outputs show earlier execution; they are not evidence of a fresh live run.
 
 ## Main files
@@ -51,3 +53,22 @@ The original experiments are preserved on the `experiment/traffic-sensor-multiye
 - **No preprocessing leakage:** the imputer and encoder are inside each model pipeline and are fitted only on the rows in the current training fit.
 - **Decision multipliers:** selected using validation-year macro F1 to trade off classes; adjusted scores are not calibrated probabilities.
 - **Scope:** vehicle composition may not be known before a collision; matched major roads do not represent all roads. The 2025 cohort is previously inspected, and a fresh final test is still needed.
+
+## Functions to know for the demo
+
+| Code | What it does |
+| --- | --- |
+| `pd.read_csv()` | Loads the dataset into a table called a DataFrame. |
+| `data[data.year == 2024]` | Selects rows from 2024 for validation. |
+| `SimpleImputer` | Fills missing values using the specified rule. |
+| `OneHotEncoder` | Turns a category such as road type into numeric columns. |
+| `ColumnTransformer` | Applies the right preparation to each group of columns. |
+| `Pipeline` | Connects preparation and modelling so they are fitted together. |
+| `model.fit()` | Trains the model on the given inputs and labels. |
+| `model.predict_proba()` | Gets a score for each possible class. |
+| `argmax(axis=1)` | Finds the position of the highest score in each row. |
+| `f1_score(..., average='macro')` | Calculates F1 for each class and averages them equally. |
+| `classification_report()` | Displays precision, recall, F1 and the number of cases per class. |
+| `ConfusionMatrixDisplay` | Shows how actual classes were predicted. |
+
+The `with threadpool_limits(limits=2)` lines limit CPU threads during training. The decision-weight loop tries a short list of weights and selects the pair with the best validation macro F1; the weights do not make the adjusted scores calibrated probabilities.
