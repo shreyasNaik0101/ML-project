@@ -2,6 +2,10 @@
 
 This branch is the clean demonstration of our selected Logistic Regression, Random Forest and XGBoost models. It uses the full 2021-2025 project dataset and the seven input groups specified in the problem statement.
 
+## Additional model experiments
+
+The optional [enhancement experiment](experiments/temporal_enhancements/README.md) compares 13 configurations, including CatBoost, using 2024 for selection. [Executed results](results/temporal_enhancements/README.md) and [the optional notebook](05_Enhanced_Models.ipynb) show the full trade-offs. No general-purpose improvement was established: the 76.90% accuracy-only setting detects no Fatal crashes, and the validation-selected CatBoost did not beat the reproduced forest on 2025. The original demonstration and results below are preserved. Use the separate experiment dependencies for this notebook.
+
 ## Run the notebooks
 
 Use Python 3.12 and open a terminal in this repository folder. On Windows:
