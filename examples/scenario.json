@@ -1,9 +1,0 @@
-{
-  "road_type": "single_carriageway",
-  "weather": "rain",
-  "surface": "wet",
-  "time": "18:30",
-  "speed_limit_mph": 40,
-  "vehicles": ["car", "bicycle"],
-  "aadf_motor_vehicles_per_day": 15000
-}

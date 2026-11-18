@@ -1,0 +1,4 @@
+Model,Accuracy (%),Slight recall (%),Serious recall (%),Fatal recall (%),Macro F1
+Logistic Regression,70.6,82.89,30.79,12.25,0.4172
+Random Forest,70.19,81.58,33.02,22.06,0.4308
+XGBoost,68.51,76.98,41.83,12.75,0.4285
