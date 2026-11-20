@@ -1,0 +1,1652 @@
+[
+  {
+    "config": {
+      "name": "baseline_lr",
+      "family": "lr",
+      "params": {},
+      "weighted": false
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7746141009595328,
+        "macro_f1": 0.353879098303638,
+        "recall": {
+          "Fatal": 0.051470588235294115,
+          "Serious": 0.0552689756816507,
+          "Slight": 0.9853030405177644
+        },
+        "precision": {
+          "Fatal": 0.358974358974359,
+          "Serious": 0.48596112311015116,
+          "Slight": 0.7826389632644318
+        },
+        "confusion_matrix": [
+          [
+            14,
+            32,
+            226
+          ],
+          [
+            13,
+            225,
+            3833
+          ],
+          [
+            12,
+            206,
+            14615
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          3.0,
+          1.25,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.7156862745098039,
+        "macro_f1": 0.4297427097318047,
+        "recall": {
+          "Fatal": 0.13602941176470587,
+          "Serious": 0.3031196266273643,
+          "Slight": 0.8395469561113733
+        },
+        "precision": {
+          "Fatal": 0.14682539682539683,
+          "Serious": 0.34536803806325217,
+          "Slight": 0.811217510259918
+        },
+        "confusion_matrix": [
+          [
+            37,
+            100,
+            135
+          ],
+          [
+            74,
+            1234,
+            2763
+          ],
+          [
+            141,
+            2239,
+            12453
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          12.0,
+          3.0,
+          1.0
+        ]
+      },
+      "constrained": null
+    },
+    "seconds": 1.17
+  },
+  {
+    "config": {
+      "name": "baseline_rf",
+      "family": "rf",
+      "params": {},
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7751877346683355,
+        "macro_f1": 0.32059291872234785,
+        "recall": {
+          "Fatal": 0.0,
+          "Serious": 0.048882338491771066,
+          "Slight": 0.9887413200296636
+        },
+        "precision": {
+          "Fatal": 0.0,
+          "Serious": 0.49379652605459057,
+          "Slight": 0.781228359878549
+        },
+        "confusion_matrix": [
+          [
+            0,
+            37,
+            235
+          ],
+          [
+            0,
+            199,
+            3872
+          ],
+          [
+            0,
+            167,
+            14666
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.75,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6684397163120568,
+        "macro_f1": 0.4344997667971242,
+        "recall": {
+          "Fatal": 0.13970588235294118,
+          "Serious": 0.47580447064603293,
+          "Slight": 0.7310051911278905
+        },
+        "precision": {
+          "Fatal": 0.1314878892733564,
+          "Serious": 0.3282494492458905,
+          "Slight": 0.8349761281379947
+        },
+        "confusion_matrix": [
+          [
+            38,
+            142,
+            92
+          ],
+          [
+            83,
+            1937,
+            2051
+          ],
+          [
+            168,
+            3822,
+            10843
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.75,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.660148101793909,
+        "macro_f1": 0.43247285876211583,
+        "recall": {
+          "Fatal": 0.25,
+          "Serious": 0.45271432080569884,
+          "Slight": 0.7246005528214117
+        },
+        "precision": {
+          "Fatal": 0.09840810419681621,
+          "Serious": 0.32665721375398793,
+          "Slight": 0.836876119286771
+        },
+        "confusion_matrix": [
+          [
+            68,
+            122,
+            82
+          ],
+          [
+            215,
+            1843,
+            2013
+          ],
+          [
+            408,
+            3677,
+            10748
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          6.0,
+          1.75,
+          1.0
+        ]
+      }
+    },
+    "seconds": 4.55
+  },
+  {
+    "config": {
+      "name": "rf_16_5",
+      "family": "rf",
+      "params": {
+        "max_depth": 16,
+        "min_samples_leaf": 5,
+        "n_estimators": 250
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7746141009595328,
+        "macro_f1": 0.29943297974913113,
+        "recall": {
+          "Fatal": 0.0,
+          "Serious": 0.01301891427167772,
+          "Slight": 0.9978426481493966
+        },
+        "precision": {
+          "Fatal": 0.0,
+          "Serious": 0.5578947368421052,
+          "Slight": 0.7756930978460248
+        },
+        "confusion_matrix": [
+          [
+            0,
+            10,
+            262
+          ],
+          [
+            0,
+            53,
+            4018
+          ],
+          [
+            0,
+            32,
+            14801
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.5,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.7246036712557363,
+        "macro_f1": 0.43369714900432177,
+        "recall": {
+          "Fatal": 0.16176470588235295,
+          "Serious": 0.2896094325718497,
+          "Slight": 0.8543113328389402
+        },
+        "precision": {
+          "Fatal": 0.1337386018237082,
+          "Serious": 0.3608815426997245,
+          "Slight": 0.8133504492939666
+        },
+        "confusion_matrix": [
+          [
+            44,
+            103,
+            125
+          ],
+          [
+            109,
+            1179,
+            2783
+          ],
+          [
+            176,
+            1985,
+            12672
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.5,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6634856070087609,
+        "macro_f1": 0.4310798505651025,
+        "recall": {
+          "Fatal": 0.2426470588235294,
+          "Serious": 0.4406779661016949,
+          "Slight": 0.7323535360345176
+        },
+        "precision": {
+          "Fatal": 0.0953757225433526,
+          "Serious": 0.3282708142726441,
+          "Slight": 0.834395882940318
+        },
+        "confusion_matrix": [
+          [
+            66,
+            118,
+            88
+          ],
+          [
+            209,
+            1794,
+            2068
+          ],
+          [
+            417,
+            3553,
+            10863
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          6.0,
+          1.75,
+          1.0
+        ]
+      }
+    },
+    "seconds": 8.72
+  },
+  {
+    "config": {
+      "name": "rf_22_5",
+      "family": "rf",
+      "params": {
+        "max_depth": 22,
+        "min_samples_leaf": 5,
+        "n_estimators": 250
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7743012098456404,
+        "macro_f1": 0.31949629252226414,
+        "recall": {
+          "Fatal": 0.0,
+          "Serious": 0.04740849914026038,
+          "Slight": 0.9879997303310186
+        },
+        "precision": {
+          "Fatal": 0.0,
+          "Serious": 0.47073170731707314,
+          "Slight": 0.7809336033251625
+        },
+        "confusion_matrix": [
+          [
+            0,
+            39,
+            233
+          ],
+          [
+            0,
+            193,
+            3878
+          ],
+          [
+            0,
+            178,
+            14655
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.75,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6813725490196079,
+        "macro_f1": 0.4329421556772006,
+        "recall": {
+          "Fatal": 0.13970588235294118,
+          "Serious": 0.4298698108572832,
+          "Slight": 0.7603316928470303
+        },
+        "precision": {
+          "Fatal": 0.12258064516129032,
+          "Serious": 0.3327628826773151,
+          "Slight": 0.8288380980377746
+        },
+        "confusion_matrix": [
+          [
+            38,
+            132,
+            102
+          ],
+          [
+            94,
+            1750,
+            2227
+          ],
+          [
+            178,
+            3377,
+            11278
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.75,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6705778055903212,
+        "macro_f1": 0.42790114161112625,
+        "recall": {
+          "Fatal": 0.24632352941176472,
+          "Serious": 0.40653402112503073,
+          "Slight": 0.7508258612553091
+        },
+        "precision": {
+          "Fatal": 0.08897742363877822,
+          "Serious": 0.32981267437225986,
+          "Slight": 0.8308093994778067
+        },
+        "confusion_matrix": [
+          [
+            67,
+            112,
+            93
+          ],
+          [
+            241,
+            1655,
+            2175
+          ],
+          [
+            445,
+            3251,
+            11137
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          6.0,
+          1.75,
+          1.0
+        ]
+      }
+    },
+    "seconds": 10.01
+  },
+  {
+    "config": {
+      "name": "rf_None_10",
+      "family": "rf",
+      "params": {
+        "max_depth": null,
+        "min_samples_leaf": 10,
+        "n_estimators": 250
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7742490613266583,
+        "macro_f1": 0.2987205171375726,
+        "recall": {
+          "Fatal": 0.0,
+          "Serious": 0.01203635470400393,
+          "Slight": 0.9976403964134025
+        },
+        "precision": {
+          "Fatal": 0.0,
+          "Serious": 0.5268817204301075,
+          "Slight": 0.7754545930933291
+        },
+        "confusion_matrix": [
+          [
+            0,
+            9,
+            263
+          ],
+          [
+            0,
+            49,
+            4022
+          ],
+          [
+            0,
+            35,
+            14798
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.5,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6797037964121819,
+        "macro_f1": 0.4375990122861711,
+        "recall": {
+          "Fatal": 0.11029411764705882,
+          "Serious": 0.45271432080569884,
+          "Slight": 0.7524438751432616
+        },
+        "precision": {
+          "Fatal": 0.19736842105263158,
+          "Serious": 0.33005014326647564,
+          "Slight": 0.8304315476190476
+        },
+        "confusion_matrix": [
+          [
+            30,
+            142,
+            100
+          ],
+          [
+            49,
+            1843,
+            2179
+          ],
+          [
+            73,
+            3599,
+            11161
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          3.0,
+          1.75,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6640592407175636,
+        "macro_f1": 0.4285845486171092,
+        "recall": {
+          "Fatal": 0.27941176470588236,
+          "Serious": 0.4163596168017686,
+          "Slight": 0.7390952605676532
+        },
+        "precision": {
+          "Fatal": 0.08941176470588236,
+          "Serious": 0.3281703775411423,
+          "Slight": 0.8329914140262898
+        },
+        "confusion_matrix": [
+          [
+            76,
+            112,
+            84
+          ],
+          [
+            262,
+            1695,
+            2114
+          ],
+          [
+            512,
+            3358,
+            10963
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          6.0,
+          1.75,
+          1.0
+        ]
+      }
+    },
+    "seconds": 9.3
+  },
+  {
+    "config": {
+      "name": "xgb_4_False",
+      "family": "xgb",
+      "params": {
+        "max_depth": 4
+      },
+      "weighted": false
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7745098039215687,
+        "macro_f1": 0.30733785845271716,
+        "recall": {
+          "Fatal": 0.003676470588235294,
+          "Serious": 0.021861950380741832,
+          "Slight": 0.9952133755814737
+        },
+        "precision": {
+          "Fatal": 0.5,
+          "Serious": 0.48633879781420764,
+          "Slight": 0.7773155705334106
+        },
+        "confusion_matrix": [
+          [
+            1,
+            23,
+            248
+          ],
+          [
+            1,
+            89,
+            3981
+          ],
+          [
+            0,
+            71,
+            14762
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          1.0,
+          0.75,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.7027012932832708,
+        "macro_f1": 0.4444403562880006,
+        "recall": {
+          "Fatal": 0.14705882352941177,
+          "Serious": 0.3915499877180054,
+          "Slight": 0.7982876019685836
+        },
+        "precision": {
+          "Fatal": 0.16,
+          "Serious": 0.34773123909249565,
+          "Slight": 0.8256170687491284
+        },
+        "confusion_matrix": [
+          [
+            40,
+            134,
+            98
+          ],
+          [
+            74,
+            1594,
+            2403
+          ],
+          [
+            136,
+            2856,
+            11841
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          12.0,
+          3.0,
+          1.0
+        ]
+      },
+      "constrained": null
+    },
+    "seconds": 6.18
+  },
+  {
+    "config": {
+      "name": "xgb_6_False",
+      "family": "xgb",
+      "params": {
+        "max_depth": 6
+      },
+      "weighted": false
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7744576554025866,
+        "macro_f1": 0.3063620299083754,
+        "recall": {
+          "Fatal": 0.0,
+          "Serious": 0.02431834929992631,
+          "Slight": 0.9945392031281601
+        },
+        "precision": {
+          "Fatal": 0.0,
+          "Serious": 0.4852941176470588,
+          "Slight": 0.7775669407547965
+        },
+        "confusion_matrix": [
+          [
+            0,
+            24,
+            248
+          ],
+          [
+            0,
+            99,
+            3972
+          ],
+          [
+            0,
+            81,
+            14752
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.75,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6892991239048811,
+        "macro_f1": 0.43959954498296955,
+        "recall": {
+          "Fatal": 0.20588235294117646,
+          "Serious": 0.4016212232866618,
+          "Slight": 0.7771185869345378
+        },
+        "precision": {
+          "Fatal": 0.11498973305954825,
+          "Serious": 0.3404122423485322,
+          "Slight": 0.8301166642661674
+        },
+        "confusion_matrix": [
+          [
+            56,
+            131,
+            85
+          ],
+          [
+            162,
+            1635,
+            2274
+          ],
+          [
+            269,
+            3037,
+            11527
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          16.0,
+          3.0,
+          1.0
+        ]
+      },
+      "constrained": null
+    },
+    "seconds": 8.46
+  },
+  {
+    "config": {
+      "name": "xgb_6_True",
+      "family": "xgb",
+      "params": {
+        "max_depth": 6
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7734668335419274,
+        "macro_f1": 0.32955351032770985,
+        "recall": {
+          "Fatal": 0.025735294117647058,
+          "Serious": 0.03758290346352248,
+          "Slight": 0.9891458235016517
+        },
+        "precision": {
+          "Fatal": 0.28,
+          "Serious": 0.45535714285714285,
+          "Slight": 0.7798033483922402
+        },
+        "confusion_matrix": [
+          [
+            7,
+            33,
+            232
+          ],
+          [
+            7,
+            153,
+            3911
+          ],
+          [
+            11,
+            150,
+            14672
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.5,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6987901543596162,
+        "macro_f1": 0.4430483765836217,
+        "recall": {
+          "Fatal": 0.17647058823529413,
+          "Serious": 0.39228690739376076,
+          "Slight": 0.792489718870087
+        },
+        "precision": {
+          "Fatal": 0.1329639889196676,
+          "Serious": 0.3460455037919827,
+          "Slight": 0.8278169014084507
+        },
+        "confusion_matrix": [
+          [
+            48,
+            131,
+            93
+          ],
+          [
+            122,
+            1597,
+            2352
+          ],
+          [
+            191,
+            2887,
+            11755
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          3.0,
+          1.5,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6932624113475178,
+        "macro_f1": 0.4412524958671447,
+        "recall": {
+          "Fatal": 0.25735294117647056,
+          "Serious": 0.377057234094817,
+          "Slight": 0.7880401806782175
+        },
+        "precision": {
+          "Fatal": 0.1111111111111111,
+          "Serious": 0.34572072072072074,
+          "Slight": 0.8286544732737842
+        },
+        "confusion_matrix": [
+          [
+            70,
+            113,
+            89
+          ],
+          [
+            208,
+            1535,
+            2328
+          ],
+          [
+            352,
+            2792,
+            11689
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.5,
+          1.0
+        ]
+      }
+    },
+    "seconds": 8.58
+  },
+  {
+    "config": {
+      "name": "xgb_8_True",
+      "family": "xgb",
+      "params": {
+        "max_depth": 8
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7738840216937839,
+        "macro_f1": 0.33039762150480156,
+        "recall": {
+          "Fatal": 0.022058823529411766,
+          "Serious": 0.04298698108572832,
+          "Slight": 0.9882693993123441
+        },
+        "precision": {
+          "Fatal": 0.2222222222222222,
+          "Serious": 0.47297297297297297,
+          "Slight": 0.780605996059428
+        },
+        "confusion_matrix": [
+          [
+            6,
+            33,
+            233
+          ],
+          [
+            9,
+            175,
+            3887
+          ],
+          [
+            12,
+            162,
+            14659
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.5,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6931059657905716,
+        "macro_f1": 0.43454567146631207,
+        "recall": {
+          "Fatal": 0.20220588235294118,
+          "Serious": 0.3804961925816753,
+          "Slight": 0.7879053461875548
+        },
+        "precision": {
+          "Fatal": 0.10204081632653061,
+          "Serious": 0.34269911504424777,
+          "Slight": 0.8278671105759013
+        },
+        "confusion_matrix": [
+          [
+            55,
+            128,
+            89
+          ],
+          [
+            181,
+            1549,
+            2341
+          ],
+          [
+            303,
+            2843,
+            11687
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.5,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6804338756779308,
+        "macro_f1": 0.4238913694444962,
+        "recall": {
+          "Fatal": 0.29411764705882354,
+          "Serious": 0.3522476050110538,
+          "Slight": 0.7775905076518573
+        },
+        "precision": {
+          "Fatal": 0.07897334649555775,
+          "Serious": 0.3374911743939751,
+          "Slight": 0.828949259738393
+        },
+        "confusion_matrix": [
+          [
+            80,
+            110,
+            82
+          ],
+          [
+            339,
+            1434,
+            2298
+          ],
+          [
+            594,
+            2705,
+            11534
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          6.0,
+          1.5,
+          1.0
+        ]
+      }
+    },
+    "seconds": 11.48
+  },
+  {
+    "config": {
+      "name": "cat_5_False",
+      "family": "cat",
+      "params": {
+        "depth": 5
+      },
+      "weighted": false
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7747183979974969,
+        "macro_f1": 0.3151433801930114,
+        "recall": {
+          "Fatal": 0.0,
+          "Serious": 0.03930238270695161,
+          "Slight": 0.9907638373896043
+        },
+        "precision": {
+          "Fatal": 0.0,
+          "Serious": 0.48338368580060426,
+          "Slight": 0.7798355001326612
+        },
+        "confusion_matrix": [
+          [
+            0,
+            34,
+            238
+          ],
+          [
+            0,
+            160,
+            3911
+          ],
+          [
+            0,
+            137,
+            14696
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          1.0,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.7082290362953693,
+        "macro_f1": 0.4467491997702506,
+        "recall": {
+          "Fatal": 0.15808823529411764,
+          "Serious": 0.36649471874232376,
+          "Slight": 0.8121081372615115
+        },
+        "precision": {
+          "Fatal": 0.17408906882591094,
+          "Serious": 0.34884264671498716,
+          "Slight": 0.8221403221403222
+        },
+        "confusion_matrix": [
+          [
+            43,
+            126,
+            103
+          ],
+          [
+            76,
+            1492,
+            2503
+          ],
+          [
+            128,
+            2659,
+            12046
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          12.0,
+          3.0,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.7045264914476429,
+        "macro_f1": 0.44507469335400907,
+        "recall": {
+          "Fatal": 0.22426470588235295,
+          "Serious": 0.35421272414640137,
+          "Slight": 0.8094788646935887
+        },
+        "precision": {
+          "Fatal": 0.13347921225382933,
+          "Serious": 0.3492371034148704,
+          "Slight": 0.822960932145305
+        },
+        "confusion_matrix": [
+          [
+            61,
+            111,
+            100
+          ],
+          [
+            146,
+            1442,
+            2483
+          ],
+          [
+            250,
+            2576,
+            12007
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          16.0,
+          3.0,
+          1.0
+        ]
+      }
+    },
+    "seconds": 12.95
+  },
+  {
+    "config": {
+      "name": "cat_7_False",
+      "family": "cat",
+      "params": {
+        "depth": 7
+      },
+      "weighted": false
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7745098039215687,
+        "macro_f1": 0.320169158105758,
+        "recall": {
+          "Fatal": 0.007352941176470588,
+          "Serious": 0.0397936624907885,
+          "Slight": 0.9902244994269535
+        },
+        "precision": {
+          "Fatal": 0.4,
+          "Serious": 0.4778761061946903,
+          "Slight": 0.7799490229396772
+        },
+        "confusion_matrix": [
+          [
+            2,
+            34,
+            236
+          ],
+          [
+            1,
+            162,
+            3908
+          ],
+          [
+            2,
+            143,
+            14688
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          1.5,
+          1.0,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6984772632457238,
+        "macro_f1": 0.44438434338948624,
+        "recall": {
+          "Fatal": 0.23529411764705882,
+          "Serious": 0.3647752394988946,
+          "Slight": 0.798557270949909
+        },
+        "precision": {
+          "Fatal": 0.13034623217922606,
+          "Serious": 0.3442280945757997,
+          "Slight": 0.8242293507758681
+        },
+        "confusion_matrix": [
+          [
+            64,
+            114,
+            94
+          ],
+          [
+            154,
+            1485,
+            2432
+          ],
+          [
+            273,
+            2715,
+            11845
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          16.0,
+          3.0,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6984772632457238,
+        "macro_f1": 0.44438434338948624,
+        "recall": {
+          "Fatal": 0.23529411764705882,
+          "Serious": 0.3647752394988946,
+          "Slight": 0.798557270949909
+        },
+        "precision": {
+          "Fatal": 0.13034623217922606,
+          "Serious": 0.3442280945757997,
+          "Slight": 0.8242293507758681
+        },
+        "confusion_matrix": [
+          [
+            64,
+            114,
+            94
+          ],
+          [
+            154,
+            1485,
+            2432
+          ],
+          [
+            273,
+            2715,
+            11845
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          16.0,
+          3.0,
+          1.0
+        ]
+      }
+    },
+    "seconds": 16.99
+  },
+  {
+    "config": {
+      "name": "cat_7_True",
+      "family": "cat",
+      "params": {
+        "depth": 7
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7743533583646225,
+        "macro_f1": 0.3225182227519467,
+        "recall": {
+          "Fatal": 0.014705882352941176,
+          "Serious": 0.03635470400393024,
+          "Slight": 0.9908312546349356
+        },
+        "precision": {
+          "Fatal": 0.18181818181818182,
+          "Serious": 0.48366013071895425,
+          "Slight": 0.7797644312393888
+        },
+        "confusion_matrix": [
+          [
+            4,
+            32,
+            236
+          ],
+          [
+            8,
+            148,
+            3915
+          ],
+          [
+            10,
+            126,
+            14697
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.5,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6982165206508135,
+        "macro_f1": 0.4400703437763583,
+        "recall": {
+          "Fatal": 0.2610294117647059,
+          "Serious": 0.3507737656595431,
+          "Slight": 0.80159104698982
+        },
+        "precision": {
+          "Fatal": 0.1143317230273752,
+          "Serious": 0.34677027683341427,
+          "Slight": 0.8235783057421902
+        },
+        "confusion_matrix": [
+          [
+            71,
+            100,
+            101
+          ],
+          [
+            197,
+            1428,
+            2446
+          ],
+          [
+            353,
+            2590,
+            11890
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.5,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6982165206508135,
+        "macro_f1": 0.4400703437763583,
+        "recall": {
+          "Fatal": 0.2610294117647059,
+          "Serious": 0.3507737656595431,
+          "Slight": 0.80159104698982
+        },
+        "precision": {
+          "Fatal": 0.1143317230273752,
+          "Serious": 0.34677027683341427,
+          "Slight": 0.8235783057421902
+        },
+        "confusion_matrix": [
+          [
+            71,
+            100,
+            101
+          ],
+          [
+            197,
+            1428,
+            2446
+          ],
+          [
+            353,
+            2590,
+            11890
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          4.0,
+          1.5,
+          1.0
+        ]
+      }
+    },
+    "seconds": 17.44
+  },
+  {
+    "config": {
+      "name": "cat_9_True",
+      "family": "cat",
+      "params": {
+        "depth": 9
+      },
+      "weighted": true
+    },
+    "points": {
+      "accuracy": {
+        "accuracy": 0.7741969128076762,
+        "macro_f1": 0.3178875305105167,
+        "recall": {
+          "Fatal": 0.007352941176470588,
+          "Serious": 0.03610906411201179,
+          "Slight": 0.9908312546349356
+        },
+        "precision": {
+          "Fatal": 0.125,
+          "Serious": 0.47419354838709676,
+          "Slight": 0.7796816976127321
+        },
+        "confusion_matrix": [
+          [
+            2,
+            34,
+            236
+          ],
+          [
+            7,
+            147,
+            3917
+          ],
+          [
+            7,
+            129,
+            14697
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          0.5,
+          0.5,
+          1.0
+        ]
+      },
+      "balanced": {
+        "accuracy": 0.6986858573216521,
+        "macro_f1": 0.4331416194727568,
+        "recall": {
+          "Fatal": 0.14705882352941177,
+          "Serious": 0.3780397936624908,
+          "Slight": 0.7968044225712937
+        },
+        "precision": {
+          "Fatal": 0.11594202898550725,
+          "Serious": 0.342685370741483,
+          "Slight": 0.8241980474198047
+        },
+        "confusion_matrix": [
+          [
+            40,
+            124,
+            108
+          ],
+          [
+            119,
+            1539,
+            2413
+          ],
+          [
+            186,
+            2828,
+            11819
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          3.0,
+          1.5,
+          1.0
+        ]
+      },
+      "constrained": {
+        "accuracy": 0.6816332916145181,
+        "macro_f1": 0.4246283470851919,
+        "recall": {
+          "Fatal": 0.3272058823529412,
+          "Serious": 0.3399656104151314,
+          "Slight": 0.7819052113530641
+        },
+        "precision": {
+          "Fatal": 0.08025247971145176,
+          "Serious": 0.3424894828012868,
+          "Slight": 0.8268929131612719
+        },
+        "confusion_matrix": [
+          [
+            89,
+            95,
+            88
+          ],
+          [
+            347,
+            1384,
+            2340
+          ],
+          [
+            673,
+            2562,
+            11598
+          ]
+        ],
+        "label_order": [
+          "Fatal",
+          "Serious",
+          "Slight"
+        ],
+        "weights": [
+          6.0,
+          1.5,
+          1.0
+        ]
+      }
+    },
+    "seconds": 44.22
+  }
+]

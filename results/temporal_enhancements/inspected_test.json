@@ -1,0 +1,241 @@
+{
+  "accuracy": {
+    "accuracy": 0.7690168922463541,
+    "macro_f1": 0.32015001206836474,
+    "recall": {
+      "Fatal": 0.0,
+      "Serious": 0.050722920123251955,
+      "Slight": 0.9867477286699912
+    },
+    "precision": {
+      "Fatal": 0.0,
+      "Serious": 0.4863636363636364,
+      "Slight": 0.7756954140264204
+    },
+    "confusion_matrix": [
+      [
+        0,
+        32,
+        172
+      ],
+      [
+        0,
+        214,
+        4005
+      ],
+      [
+        0,
+        194,
+        14445
+      ]
+    ],
+    "label_order": [
+      "Fatal",
+      "Serious",
+      "Slight"
+    ],
+    "config": {
+      "name": "baseline_rf",
+      "family": "rf",
+      "params": {},
+      "weighted": true
+    },
+    "weights": [
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
+  "balanced": {
+    "accuracy": 0.6952051201342986,
+    "macro_f1": 0.4246597720118639,
+    "recall": {
+      "Fatal": 0.12254901960784313,
+      "Serious": 0.37354823417871535,
+      "Slight": 0.7958876972470798
+    },
+    "precision": {
+      "Fatal": 0.09615384615384616,
+      "Serious": 0.3476726229869843,
+      "Slight": 0.8165253346415305
+    },
+    "confusion_matrix": [
+      [
+        25,
+        113,
+        66
+      ],
+      [
+        91,
+        1576,
+        2552
+      ],
+      [
+        144,
+        2844,
+        11651
+      ]
+    ],
+    "label_order": [
+      "Fatal",
+      "Serious",
+      "Slight"
+    ],
+    "config": {
+      "name": "cat_5_False",
+      "family": "cat",
+      "params": {
+        "depth": 5
+      },
+      "weighted": false
+    },
+    "weights": [
+      12.0,
+      3.0,
+      1.0
+    ]
+  },
+  "constrained": {
+    "accuracy": 0.6905886056027699,
+    "macro_f1": 0.4203975268665836,
+    "recall": {
+      "Fatal": 0.16666666666666666,
+      "Serious": 0.3628821995733586,
+      "Slight": 0.7923355420452217
+    },
+    "precision": {
+      "Fatal": 0.0728051391862955,
+      "Serious": 0.34827115559599636,
+      "Slight": 0.8168885132755828
+    },
+    "confusion_matrix": [
+      [
+        34,
+        107,
+        63
+      ],
+      [
+        151,
+        1531,
+        2537
+      ],
+      [
+        282,
+        2758,
+        11599
+      ]
+    ],
+    "label_order": [
+      "Fatal",
+      "Serious",
+      "Slight"
+    ],
+    "config": {
+      "name": "cat_5_False",
+      "family": "cat",
+      "params": {
+        "depth": 5
+      },
+      "weighted": false
+    },
+    "weights": [
+      16.0,
+      3.0,
+      1.0
+    ]
+  },
+  "baseline_lr": {
+    "accuracy": 0.706011960969468,
+    "macro_f1": 0.41718162768346057,
+    "recall": {
+      "Fatal": 0.12254901960784313,
+      "Serious": 0.307892865607964,
+      "Slight": 0.8288817542181843
+    },
+    "precision": {
+      "Fatal": 0.09652509652509653,
+      "Serious": 0.3478843063738618,
+      "Slight": 0.8052292786515363
+    },
+    "confusion_matrix": [
+      [
+        25,
+        90,
+        89
+      ],
+      [
+        74,
+        1299,
+        2846
+      ],
+      [
+        160,
+        2345,
+        12134
+      ]
+    ],
+    "label_order": [
+      "Fatal",
+      "Serious",
+      "Slight"
+    ],
+    "config": {
+      "name": "baseline_lr",
+      "family": "lr",
+      "params": {},
+      "weighted": false
+    },
+    "weights": [
+      12.0,
+      3.0,
+      1.0
+    ]
+  },
+  "baseline_rf": {
+    "accuracy": 0.7083726786276361,
+    "macro_f1": 0.4268990688414404,
+    "recall": {
+      "Fatal": 0.19607843137254902,
+      "Serious": 0.31263332543256694,
+      "Slight": 0.8295648609877724
+    },
+    "precision": {
+      "Fatal": 0.09195402298850575,
+      "Serious": 0.3624622148942017,
+      "Slight": 0.8102481985588471
+    },
+    "confusion_matrix": [
+      [
+        40,
+        87,
+        77
+      ],
+      [
+        133,
+        1319,
+        2767
+      ],
+      [
+        262,
+        2233,
+        12144
+      ]
+    ],
+    "label_order": [
+      "Fatal",
+      "Serious",
+      "Slight"
+    ],
+    "config": {
+      "name": "baseline_rf",
+      "family": "rf",
+      "params": {},
+      "weighted": true
+    },
+    "weights": [
+      4.0,
+      1.5,
+      1.0
+    ]
+  }
+}
